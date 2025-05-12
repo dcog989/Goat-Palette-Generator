@@ -2,7 +2,8 @@
 
 Generate a palette of colors by increments based on hue, saturation, or lightness. Export to CSS variables or XML format.
 
-![Screenshot 2025-05-05 102428-compress](https://github.com/user-attachments/assets/2e886ae4-0d25-4c3a-8b34-d8582fddc322)
+![Screenshot 2025-05-12 151815](https://github.com/user-attachments/assets/16056353-7993-4e9d-9b9d-a40bdad6f6b7)
+
 
 ## Usage
 
