@@ -1,4 +1,4 @@
-# GOAT Palette Generator
+# Goat Palette Generator
 
  Use HSL or OKLCH to generate a palette of colors by increments based on hue, saturation, or lightness. Export to CSS variables or XML format.
 
