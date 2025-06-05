@@ -4,330 +4,166 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GOAT Palette Generator</title>
-
-    <link rel="icon" href="data:image/png;base64,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" type="image/x-icon">
-
-    <style>
-        /* Default (Dark Mode) */
-        html {
-            background: #282828;
-            transition: background-color 0.3s ease;
-        }
-
-        body {
-            align-items: center;
-            background: #282828;
-            box-sizing: border-box;
-            color: #cccccc;
-            display: flex;
-            flex-direction: column;
-            font-family: 'Source Code Pro', monospace;
-            font-size: 18px;
-            margin: 0;
-            min-height: 100vh;
-            padding: 20px;
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
-
-        /* Light Mode Styles */
-        html.light-mode {
-            background: #e3e3e3;
-        }
-
-        body.light-mode {
-            background-color: #e3e3e3;
-            color: #2e2e2e;
-        }
-
-        /* Optional: Adjust control backgrounds for light mode */
-        body.light-mode .controls,
-        body.light-mode .export-controls {
-            background-color: #d0d0d0;
-        }
-
-        body.light-mode .control-group label {
-            color: #333;
-        }
-
-        body.light-mode .controls input[type="number"] {
-            background-color: #f0f0f0;
-            border-color: #aaa;
-            color: #222;
-        }
-
-        body.light-mode button {
-            background-color: #bbb;
-            color: #222;
-        }
-
-        body.light-mode button:hover {
-            background-color: #a5a5a5;
-        }
-
-        body.light-mode .controls button:hover,
-        body.light-mode .export-controls button:hover {
-            background-color: #21628d;
-            color: white;
-        }
-
-        h1 {
-            margin-bottom: 20px;
-            margin-top: 0;
-            text-align: center;
-        }
-
-        .theme-toggle-container {
-            margin-bottom: 20px;
-        }
-
-        #toggle-theme-button {
-            padding: 8px 15px;
-            font-size: 0.9em;
-            cursor: pointer;
-            border-radius: 4px;
-            border: none;
-            background-color: #444;
-            color: white;
-            transition: background-color 0.2s ease, color 0.2s ease;
-        }
-
-        #toggle-theme-button:hover {
-            background-color: #529dcf;
-        }
-
-        .controls {
-            align-items: flex-end;
-            background-color: #3a3a3a;
-            border-radius: 8px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            justify-content: center;
-            margin-bottom: 20px;
-            padding: 15px;
-            transition: background-color 0.3s ease;
-        }
-
-        .export-controls {
-            align-items: center;
-            background-color: #3a3a3a;
-            border-radius: 8px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            justify-content: center;
-            margin-bottom: 30px;
-            margin-top: 0;
-            padding: 15px;
-            transition: background-color 0.3s ease;
-        }
-
-        .control-group {
-            border: 1px solid #555;
-            border-radius: 8px;
-            display: flex;
-            flex-direction: column;
-            padding: 8px;
-        }
-
-        .control-group label {
-            color: #ccc;
-            font-size: 0.8em;
-            margin-bottom: 5px;
-            transition: color 0.3s ease;
-        }
-
-        .controls input[type="number"] {
-            appearance: textfield;
-            background-color: #444;
-            border: 1px solid #555;
-            border-radius: 4px;
-            color: #ccc;
-            padding: 8px;
-            width: 60px;
-            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
-        }
-
-        /* Hide spinner buttons for number inputs (optional aesthetic) */
-        .controls input[type=number]::-webkit-inner-spin-button,
-        .controls input[type=number]::-webkit-outer-spin-button {
-            -webkit-appearance: none;
-            margin: 0;
-        }
-
-        .controls input[type=number] {
-            appearance: textfield;
-        }
-
-        .controls .radio-group,
-        .export-controls .radio-group {
-            align-items: center;
-            display: flex;
-            gap: 10px;
-            margin-top: 5px;
-        }
-
-        .controls .radio-group input[type="radio"],
-        .export-controls .radio-group input[type="radio"] {
-            margin-right: 3px;
-            margin-top: 0;
-        }
-
-        .controls button,
-        .export-controls button {
-            background-color: #666;
-            border: none;
-            border-radius: 4px;
-            color: white;
-            cursor: pointer;
-            font-size: .9em;
-            padding: 8px 15px;
-            transition: background-color 0.2s ease, color 0.2s ease;
-        }
-
-        .controls button:hover,
-        .export-controls button:hover {
-            background-color: #529dcf;
-        }
-
-        #palette-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            justify-content: center;
-            margin: 50px 0 70px;
-        }
-
-        .colour-item {
-            align-items: center;
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .colour-input {
-            border: 1px solid #555;
-            border-radius: 8px;
-            box-sizing: border-box;
-            height: 80px;
-            width: 120px;
-            display: block;
-            transition: border-color 0.3s ease;
-        }
-
-        /* Adjust swatch border in light mode */
-        body.light-mode .colour-input {
-            border-color: #bbb;
-        }
-
-
-        .colour-code {
-            font-size: 0.9em;
-            max-width: 90px;
-            text-align: center;
-            word-break: break-all;
-            /* Color is set dynamically by JS, no need for transition here */
-        }
-    </style>
+    <title>Goat Palette Generator</title>
+    <link rel="stylesheet" href="GoatPaletteGenerator.css">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
 </head>
 
 <body>
 
     <h1>Goat Palette Generator</h1>
 
-    <div class="theme-toggle-container">
-        <button id="toggle-theme-button">Toggle Light / Dark</button>
-    </div>
+    <div class="main-controls-wrapper">
+        <div class="picker-and-tabs-column">
+            <div class="tabs">
+                <button class="tab-link active" data-tab="hslPickerPanel">HSL</button>
+                <button class="tab-link" data-tab="oklchPickerPanel">OKLCH</button>
+            </div>
 
-    <div style="display: flex; justify-content: center; margin-bottom: 20px;">
-        <div id="colorPickerContainer"></div>
-    </div>
+            <div class="picker-column">
+                <div id="hslPickerPanel" class="tab-content active">
+                    <div class="compact-picker-wrapper">
+                        <div id="colorPreviewBoxHsl" class="color-preview-box">
+                            <div class="checkerboard-element"></div>
+                            <div class="color-overlay-element"></div>
+                        </div>
+                        <div class="compact-picker-controls">
+                            <div class="slider-group">
+                                <label for="base-hue-slider">H:</label>
+                                <input type="range" id="base-hue-slider" class="hue-slider" min="0" max="359">
+                                <input type="number" id="base-hue-input-slider" class="slider-value-input" min="0" max="359"><span>°</span>
+                                <div class="vary-param-selector-inline">
+                                    <input type="radio" id="vary-hue-hsl" name="vary-param-hsl" value="hue" data-param-name="Hue" checked>
+                                    <label for="vary-hue-hsl" class="tick-label">✔</label>
+                                </div>
+                            </div>
+                            <div class="slider-group">
+                                <label for="base-saturation-slider">S:</label>
+                                <input type="range" id="base-saturation-slider" class="saturation-slider" min="0" max="100">
+                                <input type="number" id="base-saturation-input-slider" class="slider-value-input" min="0" max="100"><span>%</span>
+                                <div class="vary-param-selector-inline">
+                                    <input type="radio" id="vary-saturation-hsl" name="vary-param-hsl" value="saturation" data-param-name="Saturation">
+                                    <label for="vary-saturation-hsl" class="tick-label">✔</label>
+                                </div>
+                            </div>
+                            <div class="slider-group">
+                                <label for="base-lightness-slider">L:</label>
+                                <input type="range" id="base-lightness-slider" class="lightness-slider" min="0" max="100">
+                                <input type="number" id="base-lightness-input-slider" class="slider-value-input" min="0" max="100"><span>%</span>
+                                <div class="vary-param-selector-inline">
+                                    <input type="radio" id="vary-lightness-hsl" name="vary-param-hsl" value="lightness" data-param-name="Lightness">
+                                    <label for="vary-lightness-hsl" class="tick-label">✔</label>
+                                </div>
+                            </div>
+                            <div class="slider-group opacity-slider-group">
+                                <label for="base-opacity-slider-hsl">A:</label>
+                                <input type="range" id="base-opacity-slider-hsl" class="opacity-slider checkerboard-track" min="0" max="100">
+                                <input type="number" id="base-opacity-input-slider-hsl" class="slider-value-input" min="0" max="100"><span>%</span>
+                                <div class="vary-param-selector-inline">
+                                    <input type="radio" id="vary-opacity-hsl" name="vary-param-hsl" value="opacity" data-param-name="Opacity">
+                                    <label for="vary-opacity-hsl" class="tick-label">✔</label>
+                                </div>
+                            </div>
+                            <div class="slider-group increment-control-group-inline">
+                                <div class="increment-label-parts">
+                                    <span>Output </span>
+                                    <input type="number" id="increment-value-hsl" class="slider-value-input increment-value-inline" min="1" max="33" value="6">
+                                    <span id="dynamicIncrementLabelHsl_suffix" class="increment-label-suffix"> swatches of Hue...</span>
+                                </div>
+                                <div class="vary-param-selector-placeholder"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-    <div class="controls">
-        <div class="control-group">
-            <label for="base-hue">Hue (°)</label>
-            <input type="number" id="base-hue" value="127" min="0" max="359">
-        </div>
-        <div class="control-group">
-            <label for="base-saturation">Saturation (%)</label>
-            <input type="number" id="base-saturation" value="77" min="1" max="100">
-        </div>
-        <div class="control-group">
-            <label for="base-lightness">Lightness (%)</label>
-            <input type="number" id="base-lightness" value="62" min="1" max="100">
-        </div>
-        <div class="control-group">
-            <label for="increment-value">Increment by %:</label>
-            <input type="number" id="increment-value" value="15" min="1" max="100">
-        </div>
-        <div class="control-group">
-            <label>Vary component:</label>
-            <div class="radio-group">
-                <input type="radio" id="vary-hue" name="vary-param" value="hue" checked>
-                <label for="vary-hue">Hue</label>
-
-                <input type="radio" id="vary-saturation" name="vary-param" value="saturation">
-                <label for="vary-saturation">Saturation</label>
-
-                <input type="radio" id="vary-lightness" name="vary-param" value="lightness">
-                <label for="vary-lightness">Lightness</label>
+                <div id="oklchPickerPanel" class="tab-content">
+                    <div class="compact-picker-wrapper">
+                        <div id="colorPreviewBoxOklch" class="color-preview-box">
+                            <div class="checkerboard-element"></div>
+                            <div class="color-overlay-element"></div>
+                        </div>
+                        <div class="compact-picker-controls">
+                            <div class="slider-group">
+                                <label for="oklch-l-slider">L:</label>
+                                <input type="range" id="oklch-l-slider" class="oklch-l-slider" min="0" max="100" step="1">
+                                <input type="number" id="oklch-l-input-slider" class="slider-value-input" min="0" max="100" step="1"><span>%</span>
+                                <div class="vary-param-selector-inline">
+                                    <input type="radio" id="vary-l-oklch" name="vary-param-oklch" value="oklch_l" data-param-name="Lightness">
+                                    <label for="vary-l-oklch" class="tick-label">✔</label>
+                                </div>
+                            </div>
+                            <div class="slider-group">
+                                <label for="oklch-c-slider">C:</label>
+                                <input type="range" id="oklch-c-slider" class="oklch-c-slider" min="0" max="100" step="1">
+                                <input type="number" id="oklch-c-input-slider" class="slider-value-input" min="0" max="100" step="1" title="Chroma (colorfulness percentage relative to a typical sRGB maximum). Maximum achievable actual chroma changes with Lightness and Hue.">
+                                <span>%</span>
+                                <div class="vary-param-selector-inline">
+                                    <input type="radio" id="vary-c-oklch" name="vary-param-oklch" value="oklch_c" data-param-name="Chroma">
+                                    <label for="vary-c-oklch" class="tick-label">✔</label>
+                                </div>
+                            </div>
+                            <div class="slider-group">
+                                <label for="oklch-h-slider">H:</label>
+                                <input type="range" id="oklch-h-slider" class="oklch-h-slider" min="0" max="359">
+                                <input type="number" id="oklch-h-input-slider" class="slider-value-input" min="0" max="359"><span>°</span>
+                                <div class="vary-param-selector-inline">
+                                    <input type="radio" id="vary-h-oklch" name="vary-param-oklch" value="oklch_h" data-param-name="Hue">
+                                    <label for="vary-h-oklch" class="tick-label">✔</label>
+                                </div>
+                            </div>
+                            <div class="slider-group opacity-slider-group">
+                                <label for="base-opacity-slider-oklch">A:</label>
+                                <input type="range" id="base-opacity-slider-oklch" class="opacity-slider checkerboard-track" min="0" max="100">
+                                <input type="number" id="base-opacity-input-slider-oklch" class="slider-value-input" min="0" max="100"><span>%</span>
+                                <div class="vary-param-selector-inline">
+                                    <input type="radio" id="vary-opacity-oklch" name="vary-param-oklch" value="opacity" data-param-name="Opacity">
+                                    <label for="vary-opacity-oklch" class="tick-label">✔</label>
+                                </div>
+                            </div>
+                            <div class="slider-group increment-control-group-inline">
+                                <div class="increment-label-parts">
+                                    <span>Output </span>
+                                    <input type="number" id="increment-value-oklch" class="slider-value-input increment-value-inline" min="1" max="33" value="6">
+                                    <span id="dynamicIncrementLabelOklch_suffix" class="increment-label-suffix"> swatches of Lightness...</span>
+                                </div>
+                                <div class="vary-param-selector-placeholder"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <button id="generate-button">Generate Palette</button>
     </div>
 
-    <div id="palette-container">
-    </div>
+    <div id="palette-container"></div>
 
     <div class="export-controls">
-        <div class="control-group">
+        <div class="control-group export-format-group">
             <label>Export Format</label>
             <div class="radio-group">
-                <input type="radio" id="format-hex" name="export-format" value="hex" checked>
-                <label for="format-hex">Hex</label>
-
-                <input type="radio" id="format-hsl" name="export-format" value="hsl">
-                <label for="format-hsl">HSL</label>
-
-                <input type="radio" id="format-rgb" name="export-format" value="rgb">
-                <label for="format-rgb">RGB</label>
+                <input type="radio" id="format-hsl" name="export-format" value="hsl" checked><label for="format-hsl">HSL</label>
+                <input type="radio" id="format-hex" name="export-format" value="hex"><label for="format-hex">Hex</label>
+                <input type="radio" id="format-rgb" name="export-format" value="rgb"><label for="format-rgb">RGB</label>
+                <input type="radio" id="format-oklch" name="export-format" value="oklch"><label for="format-oklch">OKLCH</label>
             </div>
         </div>
         <button id="export-button">Export to CSS</button>
         <button id="export-xml-button">Export to XML</button>
     </div>
 
-    <script>/* iro.js
-* v5.5.2
-* 2016-2021 James Daniel
-* Licensed under MPL 2.0
-* github.com/jaames/iro.js
-*/
-        !function (t, n) { "object" == typeof exports && "undefined" != typeof module ? module.exports = n() : "function" == typeof define && define.amd ? define(n) : (t = t || self).iro = n() }(this, function () { "use strict"; var m, s, n, i, o, x = {}, j = [], r = /acit|ex(?:s|g|n|p|$)|rph|grid|ows|mnc|ntw|ine[ch]|zoo|^ord|^--/i; function M(t, n) { for (var i in n) t[i] = n[i]; return t } function y(t) { var n = t.parentNode; n && n.removeChild(t) } function h(t, n, i) { var r, e, u, o, l = arguments; if (n = M({}, n), 3 < arguments.length) for (i = [i], r = 3; r < arguments.length; r++)i.push(l[r]); if (null != i && (n.children = i), null != t && null != t.defaultProps) for (e in t.defaultProps) void 0 === n[e] && (n[e] = t.defaultProps[e]); return o = n.key, null != (u = n.ref) && delete n.ref, null != o && delete n.key, c(t, n, o, u) } function c(t, n, i, r) { var e = { type: t, props: n, key: i, ref: r, n: null, i: null, e: 0, o: null, l: null, c: null, constructor: void 0 }; return m.vnode && m.vnode(e), e } function O(t) { return t.children } function I(t, n) { this.props = t, this.context = n } function w(t, n) { if (null == n) return t.i ? w(t.i, t.i.n.indexOf(t) + 1) : null; for (var i; n < t.n.length; n++)if (null != (i = t.n[n]) && null != i.o) return i.o; return "function" == typeof t.type ? w(t) : null } function a(t) { var n, i; if (null != (t = t.i) && null != t.c) { for (t.o = t.c.base = null, n = 0; n < t.n.length; n++)if (null != (i = t.n[n]) && null != i.o) { t.o = t.c.base = i.o; break } return a(t) } } function e(t) { (!t.f && (t.f = !0) && 1 === s.push(t) || i !== m.debounceRendering) && (i = m.debounceRendering, (m.debounceRendering || n)(u)) } function u() { var t, n, i, r, e, u, o, l; for (s.sort(function (t, n) { return n.d.e - t.d.e }); t = s.pop();)t.f && (r = i = void 0, u = (e = (n = t).d).o, o = n.p, l = n.u, n.u = !1, o && (i = [], r = k(o, e, M({}, e), n.w, void 0 !== o.ownerSVGElement, null, i, l, null == u ? w(e) : u), d(i, e), r != u && a(e))) } function S(n, i, t, r, e, u, o, l, s) { var c, a, f, h, v, d, g, b = t && t.n || j, p = b.length; if (l == x && (l = null != u ? u[0] : p ? w(t, 0) : null), c = 0, i.n = A(i.n, function (t) { if (null != t) { if (t.i = i, t.e = i.e + 1, null === (f = b[c]) || f && t.key == f.key && t.type === f.type) b[c] = void 0; else for (a = 0; a < p; a++) { if ((f = b[a]) && t.key == f.key && t.type === f.type) { b[a] = void 0; break } f = null } if (h = k(n, t, f = f || x, r, e, u, o, null, l, s), (a = t.ref) && f.ref != a && (g = g || []).push(a, t.c || h, t), null != h) { if (null == d && (d = h), null != t.l) h = t.l, t.l = null; else if (u == f || h != l || null == h.parentNode) { t: if (null == l || l.parentNode !== n) n.appendChild(h); else { for (v = l, a = 0; (v = v.nextSibling) && a < p; a += 2)if (v == h) break t; n.insertBefore(h, l) } "option" == i.type && (n.value = "") } l = h.nextSibling, "function" == typeof i.type && (i.l = h) } } return c++, t }), i.o = d, null != u && "function" != typeof i.type) for (c = u.length; c--;)null != u[c] && y(u[c]); for (c = p; c--;)null != b[c] && N(b[c], b[c]); if (g) for (c = 0; c < g.length; c++)E(g[c], g[++c], g[++c]) } function A(t, n, i) { if (null == i && (i = []), null == t || "boolean" == typeof t) n && i.push(n(null)); else if (Array.isArray(t)) for (var r = 0; r < t.length; r++)A(t[r], n, i); else i.push(n ? n(function (t) { if (null == t || "boolean" == typeof t) return null; if ("string" == typeof t || "number" == typeof t) return c(null, t, null, null); if (null == t.o && null == t.c) return t; var n = c(t.type, t.props, t.key, null); return n.o = t.o, n }(t)) : t); return i } function f(t, n, i) { "-" === n[0] ? t.setProperty(n, i) : t[n] = "number" == typeof i && !1 === r.test(n) ? i + "px" : null == i ? "" : i } function R(t, n, i, r, e) { var u, o, l, s, c; if ("key" === (n = e ? "className" === n ? "class" : n : "class" === n ? "className" : n) || "children" === n); else if ("style" === n) if (u = t.style, "string" == typeof i) u.cssText = i; else { if ("string" == typeof r && (u.cssText = "", r = null), r) for (o in r) i && o in i || f(u, o, ""); if (i) for (l in i) r && i[l] === r[l] || f(u, l, i[l]) } else "o" === n[0] && "n" === n[1] ? (s = n !== (n = n.replace(/Capture$/, "")), n = ((c = n.toLowerCase()) in t ? c : n).slice(2), i ? (r || t.addEventListener(n, v, s), (t.t || (t.t = {}))[n] = i) : t.removeEventListener(n, v, s)) : "list" !== n && "tagName" !== n && "form" !== n && !e && n in t ? t[n] = null == i ? "" : i : "function" != typeof i && "dangerouslySetInnerHTML" !== n && (n !== (n = n.replace(/^xlink:?/, "")) ? null == i || !1 === i ? t.removeAttributeNS("http://www.w3.org/1999/xlink", n.toLowerCase()) : t.setAttributeNS("http://www.w3.org/1999/xlink", n.toLowerCase(), i) : null == i || !1 === i ? t.removeAttribute(n) : t.setAttribute(n, i)) } function v(t) { return this.t[t.type](m.event ? m.event(t) : t) } function k(t, n, i, r, e, u, o, l, s, c) { var a, f, h, v, d, g, b, p, y, w, k = n.type; if (void 0 !== n.constructor) return null; (a = m.e) && a(n); try { t: if ("function" == typeof k) { if (p = n.props, y = (a = k.contextType) && r[a.c], w = a ? y ? y.props.value : a.i : r, i.c ? b = (f = n.c = i.c).i = f.k : ("prototype" in k && k.prototype.render ? n.c = f = new k(p, w) : (n.c = f = new I(p, w), f.constructor = k, f.render = z), y && y.sub(f), f.props = p, f.state || (f.state = {}), f.context = w, f.w = r, h = f.f = !0, f.m = []), null == f.j && (f.j = f.state), null != k.getDerivedStateFromProps && M(f.j == f.state ? f.j = M({}, f.j) : f.j, k.getDerivedStateFromProps(p, f.j)), h) null == k.getDerivedStateFromProps && null != f.componentWillMount && f.componentWillMount(), null != f.componentDidMount && o.push(f); else { if (null == k.getDerivedStateFromProps && null == l && null != f.componentWillReceiveProps && f.componentWillReceiveProps(p, w), !l && null != f.shouldComponentUpdate && !1 === f.shouldComponentUpdate(p, f.j, w)) { for (f.props = p, f.state = f.j, f.f = !1, (f.d = n).o = null != s ? s !== i.o ? s : i.o : null, n.n = i.n, a = 0; a < n.n.length; a++)n.n[a] && (n.n[a].i = n); break t } null != f.componentWillUpdate && f.componentWillUpdate(p, f.j, w) } for (v = f.props, d = f.state, f.context = w, f.props = p, f.state = f.j, (a = m.M) && a(n), f.f = !1, f.d = n, f.p = t, a = f.render(f.props, f.state, f.context), n.n = A(null != a && a.type == O && null == a.key ? a.props.children : a), null != f.getChildContext && (r = M(M({}, r), f.getChildContext())), h || null == f.getSnapshotBeforeUpdate || (g = f.getSnapshotBeforeUpdate(v, d)), S(t, n, i, r, e, u, o, s, c), f.base = n.o; a = f.m.pop();)f.j && (f.state = f.j), a.call(f); h || null == v || null == f.componentDidUpdate || f.componentDidUpdate(v, d, g), b && (f.k = f.i = null) } else n.o = function (t, n, i, r, e, u, o, l) { var s, c, a, f, h = i.props, v = n.props; if (e = "svg" === n.type || e, null == t && null != u) for (s = 0; s < u.length; s++)if (null != (c = u[s]) && (null === n.type ? 3 === c.nodeType : c.localName === n.type)) { t = c, u[s] = null; break } if (null == t) { if (null === n.type) return document.createTextNode(v); t = e ? document.createElementNS("http://www.w3.org/2000/svg", n.type) : document.createElement(n.type), u = null } return null === n.type ? h !== v && (null != u && (u[u.indexOf(t)] = null), t.data = v) : n !== i && (null != u && (u = j.slice.call(t.childNodes)), a = (h = i.props || x).dangerouslySetInnerHTML, f = v.dangerouslySetInnerHTML, l || (f || a) && (f && a && f.O == a.O || (t.innerHTML = f && f.O || "")), function (t, n, i, r, e) { var u; for (u in i) u in n || R(t, u, null, i[u], r); for (u in n) e && "function" != typeof n[u] || "value" === u || "checked" === u || i[u] === n[u] || R(t, u, n[u], i[u], r) }(t, v, h, e, l), n.n = n.props.children, f || S(t, n, i, r, "foreignObject" !== n.type && e, u, o, x, l), l || ("value" in v && void 0 !== v.value && v.value !== t.value && (t.value = null == v.value ? "" : v.value), "checked" in v && void 0 !== v.checked && v.checked !== t.checked && (t.checked = v.checked))), t }(i.o, n, i, r, e, u, o, c); (a = m.diffed) && a(n) } catch (t) { m.o(t, n, i) } return n.o } function d(t, n) { for (var i; i = t.pop();)try { i.componentDidMount() } catch (t) { m.o(t, i.d) } m.c && m.c(n) } function E(t, n, i) { try { "function" == typeof t ? t(n) : t.current = n } catch (t) { m.o(t, i) } } function N(t, n, i) { var r, e, u; if (m.unmount && m.unmount(t), (r = t.ref) && E(r, null, n), i || "function" == typeof t.type || (i = null != (e = t.o)), t.o = t.l = null, null != (r = t.c)) { if (r.componentWillUnmount) try { r.componentWillUnmount() } catch (t) { m.o(t, n) } r.base = r.p = null } if (r = t.n) for (u = 0; u < r.length; u++)r[u] && N(r[u], n, i); null != e && y(e) } function z(t, n, i) { return this.constructor(t, i) } function g(t, n) { for (var i = 0; i < n.length; i++) { var r = n[i]; r.enumerable = r.enumerable || !1, r.configurable = !0, "value" in r && (r.writable = !0), Object.defineProperty(t, r.key, r) } } function b() { return (b = Object.assign || function (t) { for (var n = arguments, i = 1; i < arguments.length; i++) { var r = n[i]; for (var e in r) Object.prototype.hasOwnProperty.call(r, e) && (t[e] = r[e]) } return t }).apply(this, arguments) } m = {}, I.prototype.setState = function (t, n) { var i = this.j !== this.state && this.j || (this.j = M({}, this.state)); "function" == typeof t && !(t = t(i, this.props)) || M(i, t), null != t && this.d && (this.u = !1, n && this.m.push(n), e(this)) }, I.prototype.forceUpdate = function (t) { this.d && (t && this.m.push(t), this.u = !0, e(this)) }, I.prototype.render = O, s = [], n = "function" == typeof Promise ? Promise.prototype.then.bind(Promise.resolve()) : setTimeout, i = m.debounceRendering, m.o = function (t, n, i) { for (var r; n = n.i;)if ((r = n.c) && !r.i) try { if (r.constructor && null != r.constructor.getDerivedStateFromError) r.setState(r.constructor.getDerivedStateFromError(t)); else { if (null == r.componentDidCatch) continue; r.componentDidCatch(t) } return e(r.k = r) } catch (n) { t = n } throw t }, o = x; var t = "(?:[-\\+]?\\d*\\.\\d+%?)|(?:[-\\+]?\\d+%?)", l = "[\\s|\\(]+(" + t + ")[,|\\s]+(" + t + ")[,|\\s]+(" + t + ")\\s*\\)?", p = "[\\s|\\(]+(" + t + ")[,|\\s]+(" + t + ")[,|\\s]+(" + t + ")[,|\\s]+(" + t + ")\\s*\\)?", _ = new RegExp("rgb" + l), H = new RegExp("rgba" + p), P = new RegExp("hsl" + l), $ = new RegExp("hsla" + p), T = "^(?:#?|0x?)", W = "([0-9a-fA-F]{1})", C = "([0-9a-fA-F]{2})", D = new RegExp(T + W + W + W + "$"), F = new RegExp(T + W + W + W + W + "$"), L = new RegExp(T + C + C + C + "$"), B = new RegExp(T + C + C + C + C + "$"), q = Math.log, G = Math.round, Z = Math.floor; function J(t, n, i) { return Math.min(Math.max(t, n), i) } function K(t, n) { var i = -1 < t.indexOf("%"), r = parseFloat(t); return i ? n / 100 * r : r } function Q(t) { return parseInt(t, 16) } function U(t) { return t.toString(16).padStart(2, "0") } var V = function () { function l(t, n) { this.$ = { h: 0, s: 0, v: 0, a: 1 }, t && this.set(t), this.onChange = n, this.initialValue = b({}, this.$) } var t = l.prototype; return t.set = function (t) { if ("string" == typeof t) /^(?:#?|0x?)[0-9a-fA-F]{3,8}$/.test(t) ? this.hexString = t : /^rgba?/.test(t) ? this.rgbString = t : /^hsla?/.test(t) && (this.hslString = t); else { if ("object" != typeof t) throw new Error("Invalid color value"); t instanceof l ? this.hsva = t.hsva : "r" in t && "g" in t && "b" in t ? this.rgb = t : "h" in t && "s" in t && "v" in t ? this.hsv = t : "h" in t && "s" in t && "l" in t ? this.hsl = t : "kelvin" in t && (this.kelvin = t.kelvin) } }, t.setChannel = function (t, n, i) { var r; this[t] = b({}, this[t], ((r = {})[n] = i, r)) }, t.reset = function () { this.hsva = this.initialValue }, t.clone = function () { return new l(this) }, t.unbind = function () { this.onChange = void 0 }, l.hsvToRgb = function (t) { var n = t.h / 60, i = t.s / 100, r = t.v / 100, e = Z(n), u = n - e, o = r * (1 - i), l = r * (1 - u * i), s = r * (1 - (1 - u) * i), c = e % 6, a = [s, r, r, l, o, o][c], f = [o, o, s, r, r, l][c]; return { r: J(255 * [r, l, o, o, s, r][c], 0, 255), g: J(255 * a, 0, 255), b: J(255 * f, 0, 255) } }, l.rgbToHsv = function (t) { var n = t.r / 255, i = t.g / 255, r = t.b / 255, e = Math.max(n, i, r), u = Math.min(n, i, r), o = e - u, l = 0, s = e, c = 0 === e ? 0 : o / e; switch (e) { case u: l = 0; break; case n: l = (i - r) / o + (i < r ? 6 : 0); break; case i: l = (r - n) / o + 2; break; case r: l = (n - i) / o + 4 }return { h: 60 * l % 360, s: J(100 * c, 0, 100), v: J(100 * s, 0, 100) } }, l.hsvToHsl = function (t) { var n = t.s / 100, i = t.v / 100, r = (2 - n) * i, e = r <= 1 ? r : 2 - r, u = e < 1e-9 ? 0 : n * i / e; return { h: t.h, s: J(100 * u, 0, 100), l: J(50 * r, 0, 100) } }, l.hslToHsv = function (t) { var n = 2 * t.l, i = t.s * (n <= 100 ? n : 200 - n) / 100, r = n + i < 1e-9 ? 0 : 2 * i / (n + i); return { h: t.h, s: J(100 * r, 0, 100), v: J((n + i) / 2, 0, 100) } }, l.kelvinToRgb = function (t) { var n, i, r, e = t / 100; return r = e < 66 ? (n = 255, i = -155.25485562709179 - .44596950469579133 * (i = e - 2) + 104.49216199393888 * q(i), e < 20 ? 0 : .8274096064007395 * (r = e - 10) - 254.76935184120902 + 115.67994401066147 * q(r)) : (n = 351.97690566805693 + .114206453784165 * (n = e - 55) - 40.25366309332127 * q(n), i = 325.4494125711974 + .07943456536662342 * (i = e - 50) - 28.0852963507957 * q(i), 255), { r: J(Z(n), 0, 255), g: J(Z(i), 0, 255), b: J(Z(r), 0, 255) } }, l.rgbToKelvin = function (t) { for (var n, i = t.r, r = t.b, e = 2e3, u = 4e4; .4 < u - e;) { var o = l.kelvinToRgb(n = .5 * (u + e)); o.b / o.r >= r / i ? u = n : e = n } return n }, function (t, n, i) { n && g(t.prototype, n), i && g(t, i) }(l, [{ key: "hsv", get: function () { var t = this.$; return { h: t.h, s: t.s, v: t.v } }, set: function (t) { var n = this.$; if (t = b({}, n, t), this.onChange) { var i = { h: !1, v: !1, s: !1, a: !1 }; for (var r in n) i[r] = t[r] != n[r]; this.$ = t, (i.h || i.s || i.v || i.a) && this.onChange(this, i) } else this.$ = t } }, { key: "hsva", get: function () { return b({}, this.$) }, set: function (t) { this.hsv = t } }, { key: "hue", get: function () { return this.$.h }, set: function (t) { this.hsv = { h: t } } }, { key: "saturation", get: function () { return this.$.s }, set: function (t) { this.hsv = { s: t } } }, { key: "value", get: function () { return this.$.v }, set: function (t) { this.hsv = { v: t } } }, { key: "alpha", get: function () { return this.$.a }, set: function (t) { this.hsv = b({}, this.hsv, { a: t }) } }, { key: "kelvin", get: function () { return l.rgbToKelvin(this.rgb) }, set: function (t) { this.rgb = l.kelvinToRgb(t) } }, { key: "red", get: function () { return this.rgb.r }, set: function (t) { this.rgb = b({}, this.rgb, { r: t }) } }, { key: "green", get: function () { return this.rgb.g }, set: function (t) { this.rgb = b({}, this.rgb, { g: t }) } }, { key: "blue", get: function () { return this.rgb.b }, set: function (t) { this.rgb = b({}, this.rgb, { b: t }) } }, { key: "rgb", get: function () { var t = l.hsvToRgb(this.$), n = t.r, i = t.g, r = t.b; return { r: G(n), g: G(i), b: G(r) } }, set: function (t) { this.hsv = b({}, l.rgbToHsv(t), { a: void 0 === t.a ? 1 : t.a }) } }, { key: "rgba", get: function () { return b({}, this.rgb, { a: this.alpha }) }, set: function (t) { this.rgb = t } }, { key: "hsl", get: function () { var t = l.hsvToHsl(this.$), n = t.h, i = t.s, r = t.l; return { h: G(n), s: G(i), l: G(r) } }, set: function (t) { this.hsv = b({}, l.hslToHsv(t), { a: void 0 === t.a ? 1 : t.a }) } }, { key: "hsla", get: function () { return b({}, this.hsl, { a: this.alpha }) }, set: function (t) { this.hsl = t } }, { key: "rgbString", get: function () { var t = this.rgb; return "rgb(" + t.r + ", " + t.g + ", " + t.b + ")" }, set: function (t) { var n, i, r, e, u = 1; if ((n = _.exec(t)) ? (i = K(n[1], 255), r = K(n[2], 255), e = K(n[3], 255)) : (n = H.exec(t)) && (i = K(n[1], 255), r = K(n[2], 255), e = K(n[3], 255), u = K(n[4], 1)), !n) throw new Error("Invalid rgb string"); this.rgb = { r: i, g: r, b: e, a: u } } }, { key: "rgbaString", get: function () { var t = this.rgba; return "rgba(" + t.r + ", " + t.g + ", " + t.b + ", " + t.a + ")" }, set: function (t) { this.rgbString = t } }, { key: "hexString", get: function () { var t = this.rgb; return "#" + U(t.r) + U(t.g) + U(t.b) }, set: function (t) { var n, i, r, e, u = 255; if ((n = D.exec(t)) ? (i = 17 * Q(n[1]), r = 17 * Q(n[2]), e = 17 * Q(n[3])) : (n = F.exec(t)) ? (i = 17 * Q(n[1]), r = 17 * Q(n[2]), e = 17 * Q(n[3]), u = 17 * Q(n[4])) : (n = L.exec(t)) ? (i = Q(n[1]), r = Q(n[2]), e = Q(n[3])) : (n = B.exec(t)) && (i = Q(n[1]), r = Q(n[2]), e = Q(n[3]), u = Q(n[4])), !n) throw new Error("Invalid hex string"); this.rgb = { r: i, g: r, b: e, a: u / 255 } } }, { key: "hex8String", get: function () { var t = this.rgba; return "#" + U(t.r) + U(t.g) + U(t.b) + U(Z(255 * t.a)) }, set: function (t) { this.hexString = t } }, { key: "hslString", get: function () { var t = this.hsl; return "hsl(" + t.h + ", " + t.s + "%, " + t.l + "%)" }, set: function (t) { var n, i, r, e, u = 1; if ((n = P.exec(t)) ? (i = K(n[1], 360), r = K(n[2], 100), e = K(n[3], 100)) : (n = $.exec(t)) && (i = K(n[1], 360), r = K(n[2], 100), e = K(n[3], 100), u = K(n[4], 1)), !n) throw new Error("Invalid hsl string"); this.hsl = { h: i, s: r, l: e, a: u } } }, { key: "hslaString", get: function () { var t = this.hsla; return "hsla(" + t.h + ", " + t.s + "%, " + t.l + "%, " + t.a + ")" }, set: function (t) { this.hslString = t } }]), l }(); function X(t) { var n, i = t.width, r = t.sliderSize, e = t.borderWidth, u = t.handleRadius, o = t.padding, l = t.sliderShape, s = "horizontal" === t.layoutDirection; return r = null != (n = r) ? n : 2 * o + 2 * u, "circle" === l ? { handleStart: t.padding + t.handleRadius, handleRange: i - 2 * o - 2 * u, width: i, height: i, cx: i / 2, cy: i / 2, radius: i / 2 - e / 2 } : { handleStart: r / 2, handleRange: i - r, radius: r / 2, x: 0, y: 0, width: s ? r : i, height: s ? i : r } } function Y(t, n) { var i = X(t), r = i.width, e = i.height, u = i.handleRange, o = i.handleStart, l = "horizontal" === t.layoutDirection, s = l ? r / 2 : e / 2, c = o + function (t, n) { var i = n.hsva, r = n.rgb; switch (t.sliderType) { case "red": return r.r / 2.55; case "green": return r.g / 2.55; case "blue": return r.b / 2.55; case "alpha": return 100 * i.a; case "kelvin": var e = t.minTemperature, u = t.maxTemperature - e, o = (n.kelvin - e) / u * 100; return Math.max(0, Math.min(o, 100)); case "hue": return i.h /= 3.6; case "saturation": return i.s; case "value": default: return i.v } }(t, n) / 100 * u; return l && (c = -1 * c + u + 2 * o), { x: l ? s : c, y: l ? c : s } } var tt, nt = 2 * Math.PI, it = function (t, n) { return (t % n + n) % n }, rt = function (t, n) { return Math.sqrt(t * t + n * n) }; function et(t) { return t.width / 2 - t.padding - t.handleRadius - t.borderWidth } function ut(t) { var n = t.width / 2; return { width: t.width, radius: n - t.borderWidth, cx: n, cy: n } } function ot(t, n, i) { var r = t.wheelAngle, e = t.wheelDirection; return i && "clockwise" === e ? n = r + n : "clockwise" === e ? n = 360 - r + n : i && "anticlockwise" === e ? n = r + 180 - n : "anticlockwise" === e && (n = r - n), it(n, 360) } function lt(t, n, i) { var r = ut(t), e = r.cx, u = r.cy, o = et(t); n = e - n, i = u - i; var l = ot(t, Math.atan2(-i, -n) * (360 / nt)), s = Math.min(rt(n, i), o); return { h: Math.round(l), s: Math.round(100 / o * s) } } function st(t) { var n = t.width, i = t.boxHeight; return { width: n, height: null != i ? i : n, radius: t.padding + t.handleRadius } } function ct(t, n, i) { var r = st(t), e = r.width, u = r.height, o = r.radius, l = (n - o) / (e - 2 * o) * 100, s = (i - o) / (u - 2 * o) * 100; return { s: Math.max(0, Math.min(l, 100)), v: Math.max(0, Math.min(100 - s, 100)) } } function at(t, n, i, r) { for (var e = 0; e < r.length; e++) { var u = r[e].x - n, o = r[e].y - i; if (Math.sqrt(u * u + o * o) < t.handleRadius) return e } return null } function ft(t) { return { boxSizing: "border-box", border: t.borderWidth + "px solid " + t.borderColor } } function ht(t, n, i) { return t + "-gradient(" + n + ", " + i.map(function (t) { var n = t[0]; return t[1] + " " + n + "%" }).join(",") + ")" } function vt(t) { return "string" == typeof t ? t : t + "px" } var dt = ["mousemove", "touchmove", "mouseup", "touchend"], gt = function (n) { function t(t) { n.call(this, t), this.uid = (Math.random() + 1).toString(36).substring(5) } return n && (t.__proto__ = n), ((t.prototype = Object.create(n && n.prototype)).constructor = t).prototype.render = function (t) { var n = this.handleEvent.bind(this), i = { onMouseDown: n, ontouchstart: n }, r = "horizontal" === t.layoutDirection, e = null === t.margin ? t.sliderMargin : t.margin, u = { overflow: "visible", display: r ? "inline-block" : "block" }; return 0 < t.index && (u[r ? "marginLeft" : "marginTop"] = e), h(O, null, t.children(this.uid, i, u)) }, t.prototype.handleEvent = function (t) { var n = this, i = this.props.onInput, r = this.base.getBoundingClientRect(); t.preventDefault(); var e = t.touches ? t.changedTouches[0] : t, u = e.clientX - r.left, o = e.clientY - r.top; switch (t.type) { case "mousedown": case "touchstart": !1 !== i(u, o, 0) && dt.forEach(function (t) { document.addEventListener(t, n, { passive: !1 }) }); break; case "mousemove": case "touchmove": i(u, o, 1); break; case "mouseup": case "touchend": i(u, o, 2), dt.forEach(function (t) { document.removeEventListener(t, n, { passive: !1 }) }) } }, t }(I); function bt(t) { var n = t.r, i = t.url, r = n, e = n; return h("svg", { className: "IroHandle IroHandle--" + t.index + " " + (t.isActive ? "IroHandle--isActive" : ""), style: { "-webkit-tap-highlight-color": "rgba(0, 0, 0, 0);", transform: "translate(" + vt(t.x) + ", " + vt(t.y) + ")", willChange: "transform", top: vt(-n), left: vt(-n), width: vt(2 * n), height: vt(2 * n), position: "absolute", overflow: "visible" } }, i && h("use", Object.assign({ xlinkHref: function (t) { tt = tt || document.getElementsByTagName("base"); var n = window.navigator.userAgent, i = /^((?!chrome|android).)*safari/i.test(n), r = /iPhone|iPod|iPad/i.test(n), e = window.location; return (i || r) && 0 < tt.length ? e.protocol + "//" + e.host + e.pathname + e.search + t : t }(i) }, t.props)), !i && h("circle", { cx: r, cy: e, r: n, fill: "none", "stroke-width": 2, stroke: "#000" }), !i && h("circle", { cx: r, cy: e, r: n - 2, fill: t.fill, "stroke-width": 2, stroke: "#fff" })) } function pt(e) { var t = e.activeIndex, u = void 0 !== t && t < e.colors.length ? e.colors[t] : e.color, n = X(e), r = n.width, o = n.height, l = n.radius, s = Y(e, u), c = function (t, n) { var i = n.hsv, r = n.rgb; switch (t.sliderType) { case "red": return [[0, "rgb(0," + r.g + "," + r.b + ")"], [100, "rgb(255," + r.g + "," + r.b + ")"]]; case "green": return [[0, "rgb(" + r.r + ",0," + r.b + ")"], [100, "rgb(" + r.r + ",255," + r.b + ")"]]; case "blue": return [[0, "rgb(" + r.r + "," + r.g + ",0)"], [100, "rgb(" + r.r + "," + r.g + ",255)"]]; case "alpha": return [[0, "rgba(" + r.r + "," + r.g + "," + r.b + ",0)"], [100, "rgb(" + r.r + "," + r.g + "," + r.b + ")"]]; case "kelvin": for (var e = [], u = t.minTemperature, o = t.maxTemperature, l = o - u, s = u, c = 0; s < o; s += l / 8, c += 1) { var a = V.kelvinToRgb(s), f = a.r, h = a.g, v = a.b; e.push([12.5 * c, "rgb(" + f + "," + h + "," + v + ")"]) } return e; case "hue": return [[0, "#f00"], [16.666, "#ff0"], [33.333, "#0f0"], [50, "#0ff"], [66.666, "#00f"], [83.333, "#f0f"], [100, "#f00"]]; case "saturation": var d = V.hsvToHsl({ h: i.h, s: 0, v: i.v }), g = V.hsvToHsl({ h: i.h, s: 100, v: i.v }); return [[0, "hsl(" + d.h + "," + d.s + "%," + d.l + "%)"], [100, "hsl(" + g.h + "," + g.s + "%," + g.l + "%)"]]; case "value": default: var b = V.hsvToHsl({ h: i.h, s: i.s, v: 100 }); return [[0, "#000"], [100, "hsl(" + b.h + "," + b.s + "%," + b.l + "%)"]] } }(e, u); return h(gt, Object.assign({}, e, { onInput: function (t, n, i) { var r = function (t, n, i) { var r, e = X(t), u = e.handleRange, o = e.handleStart; r = "horizontal" === t.layoutDirection ? -1 * i + u + o : n - o, r = Math.max(Math.min(r, u), 0); var l = Math.round(100 / u * r); switch (t.sliderType) { case "kelvin": var s = t.minTemperature; return s + l / 100 * (t.maxTemperature - s); case "alpha": return l / 100; case "hue": return 3.6 * l; case "red": case "blue": case "green": return 2.55 * l; default: return l } }(e, t, n); e.parent.inputActive = !0, u[e.sliderType] = r, e.onInput(i, e.id) } }), function (t, n, i) { return h("div", Object.assign({}, n, { className: "IroSlider", style: Object.assign({}, { position: "relative", width: vt(r), height: vt(o), borderRadius: vt(l), background: "conic-gradient(#ccc 25%, #fff 0 50%, #ccc 0 75%, #fff 0)", backgroundSize: "8px 8px" }, i) }), h("div", { className: "IroSliderGradient", style: Object.assign({}, { position: "absolute", top: 0, left: 0, width: "100%", height: "100%", borderRadius: vt(l), background: ht("linear", "horizontal" === e.layoutDirection ? "to top" : "to right", c) }, ft(e)) }), h(bt, { isActive: !0, index: u.index, r: e.handleRadius, url: e.handleSvg, props: e.handleProps, x: s.x, y: s.y })) }) } function yt(e) { var t = st(e), r = t.width, u = t.height, o = t.radius, l = e.colors, s = e.parent, n = e.activeIndex, c = void 0 !== n && n < e.colors.length ? e.colors[n] : e.color, a = function (t, n) { return [[[0, "#fff"], [100, "hsl(" + n.hue + ",100%,50%)"]], [[0, "rgba(0,0,0,0)"], [100, "#000"]]] }(0, c), f = l.map(function (t) { return function (t, n) { var i = st(t), r = i.width, e = i.height, u = i.radius, o = n.hsv, l = u, s = r - 2 * u, c = e - 2 * u; return { x: l + o.s / 100 * s, y: l + (c - o.v / 100 * c) } }(e, t) }); return h(gt, Object.assign({}, e, { onInput: function (t, n, i) { if (0 === i) { var r = at(e, t, n, f); null !== r ? s.setActiveColor(r) : (s.inputActive = !0, c.hsv = ct(e, t, n), e.onInput(i, e.id)) } else 1 === i && (s.inputActive = !0, c.hsv = ct(e, t, n)); e.onInput(i, e.id) } }), function (t, n, i) { return h("div", Object.assign({}, n, { className: "IroBox", style: Object.assign({}, { width: vt(r), height: vt(u), position: "relative" }, i) }), h("div", { className: "IroBox", style: Object.assign({}, { width: "100%", height: "100%", borderRadius: vt(o) }, ft(e), { background: ht("linear", "to bottom", a[1]) + "," + ht("linear", "to right", a[0]) }) }), l.filter(function (t) { return t !== c }).map(function (t) { return h(bt, { isActive: !1, index: t.index, fill: t.hslString, r: e.handleRadius, url: e.handleSvg, props: e.handleProps, x: f[t.index].x, y: f[t.index].y }) }), h(bt, { isActive: !0, index: c.index, fill: c.hslString, r: e.activeHandleRadius || e.handleRadius, url: e.handleSvg, props: e.handleProps, x: f[c.index].x, y: f[c.index].y })) }) } bt.defaultProps = { fill: "none", x: 0, y: 0, r: 8, url: null, props: { x: 0, y: 0 } }, pt.defaultProps = Object.assign({}, { sliderShape: "bar", sliderType: "value", minTemperature: 2200, maxTemperature: 11e3 }); function wt(e) { var r = ut(e).width, u = e.colors, o = (e.borderWidth, e.parent), l = e.color, s = l.hsv, c = u.map(function (t) { return function (t, n) { var i = n.hsv, r = ut(t), e = r.cx, u = r.cy, o = et(t), l = (180 + ot(t, i.h, !0)) * (nt / 360), s = i.s / 100 * o, c = "clockwise" === t.wheelDirection ? -1 : 1; return { x: e + s * Math.cos(l) * c, y: u + s * Math.sin(l) * c } }(e, t) }), a = { position: "absolute", top: 0, left: 0, width: "100%", height: "100%", borderRadius: "50%", boxSizing: "border-box" }; return h(gt, Object.assign({}, e, { onInput: function (t, n, i) { if (0 === i) { if (!function (t, n, i) { var r = ut(t), e = r.cx, u = r.cy, o = t.width / 2; return rt(e - n, u - i) < o }(e, t, n)) return !1; var r = at(e, t, n, c); null !== r ? o.setActiveColor(r) : (o.inputActive = !0, l.hsv = lt(e, t, n), e.onInput(i, e.id)) } else 1 === i && (o.inputActive = !0, l.hsv = lt(e, t, n)); e.onInput(i, e.id) } }), function (t, n, i) { return h("div", Object.assign({}, n, { className: "IroWheel", style: Object.assign({}, { width: vt(r), height: vt(r), position: "relative" }, i) }), h("div", { className: "IroWheelHue", style: Object.assign({}, a, { transform: "rotateZ(" + (e.wheelAngle + 90) + "deg)", background: "clockwise" === e.wheelDirection ? "conic-gradient(red, yellow, lime, aqua, blue, magenta, red)" : "conic-gradient(red, magenta, blue, aqua, lime, yellow, red)" }) }), h("div", { className: "IroWheelSaturation", style: Object.assign({}, a, { background: "radial-gradient(circle closest-side, #fff, transparent)" }) }), e.wheelLightness && h("div", { className: "IroWheelLightness", style: Object.assign({}, a, { background: "#000", opacity: 1 - s.v / 100 }) }), h("div", { className: "IroWheelBorder", style: Object.assign({}, a, ft(e)) }), u.filter(function (t) { return t !== l }).map(function (t) { return h(bt, { isActive: !1, index: t.index, fill: t.hslString, r: e.handleRadius, url: e.handleSvg, props: e.handleProps, x: c[t.index].x, y: c[t.index].y }) }), h(bt, { isActive: !0, index: l.index, fill: l.hslString, r: e.activeHandleRadius || e.handleRadius, url: e.handleSvg, props: e.handleProps, x: c[l.index].x, y: c[l.index].y })) }) } var kt = function (i) { function t(t) { var n = this; i.call(this, t), this.colors = [], this.inputActive = !1, this.events = {}, this.activeEvents = {}, this.deferredEvents = {}, this.id = t.id, (0 < t.colors.length ? t.colors : [t.color]).forEach(function (t) { return n.addColor(t) }), this.setActiveColor(0), this.state = Object.assign({}, t, { color: this.color, colors: this.colors, layout: t.layout }) } return i && (t.__proto__ = i), ((t.prototype = Object.create(i && i.prototype)).constructor = t).prototype.addColor = function (t, n) { void 0 === n && (n = this.colors.length); var i = new V(t, this.onColorChange.bind(this)); this.colors.splice(n, 0, i), this.colors.forEach(function (t, n) { return t.index = n }), this.state && this.setState({ colors: this.colors }), this.deferredEmit("color:init", i) }, t.prototype.removeColor = function (t) { var n = this.colors.splice(t, 1)[0]; n.unbind(), this.colors.forEach(function (t, n) { return t.index = n }), this.state && this.setState({ colors: this.colors }), n.index === this.color.index && this.setActiveColor(0), this.emit("color:remove", n) }, t.prototype.setActiveColor = function (t) { this.color = this.colors[t], this.state && this.setState({ color: this.color }), this.emit("color:setActive", this.color) }, t.prototype.setColors = function (t, n) { var i = this; void 0 === n && (n = 0), this.colors.forEach(function (t) { return t.unbind() }), this.colors = [], t.forEach(function (t) { return i.addColor(t) }), this.setActiveColor(n), this.emit("color:setAll", this.colors) }, t.prototype.on = function (t, n) { var i = this, r = this.events; (Array.isArray(t) ? t : [t]).forEach(function (t) { (r[t] || (r[t] = [])).push(n), i.deferredEvents[t] && (i.deferredEvents[t].forEach(function (t) { n.apply(null, t) }), i.deferredEvents[t] = []) }) }, t.prototype.off = function (t, i) { var r = this; (Array.isArray(t) ? t : [t]).forEach(function (t) { var n = r.events[t]; n && n.splice(n.indexOf(i), 1) }) }, t.prototype.emit = function (t) { for (var n = this, i = [], r = arguments.length - 1; 0 < r--;)i[r] = arguments[r + 1]; var e = this.activeEvents; !!e.hasOwnProperty(t) && e[t] || (e[t] = !0, (this.events[t] || []).forEach(function (t) { return t.apply(n, i) }), e[t] = !1) }, t.prototype.deferredEmit = function (t) { for (var n, i = [], r = arguments.length - 1; 0 < r--;)i[r] = arguments[r + 1]; var e = this.deferredEvents; (n = this).emit.apply(n, [t].concat(i)), (e[t] || (e[t] = [])).push(i) }, t.prototype.setOptions = function (t) { this.setState(t) }, t.prototype.resize = function (t) { this.setOptions({ width: t }) }, t.prototype.reset = function () { this.colors.forEach(function (t) { return t.reset() }), this.setState({ colors: this.colors }) }, t.prototype.onMount = function (t) { this.el = t, this.deferredEmit("mount", this) }, t.prototype.onColorChange = function (t, n) { this.setState({ color: this.color }), this.inputActive && (this.inputActive = !1, this.emit("input:change", t, n)), this.emit("color:change", t, n) }, t.prototype.emitInputEvent = function (t, n) { 0 === t ? this.emit("input:start", this.color, n) : 1 === t ? this.emit("input:move", this.color, n) : 2 === t && this.emit("input:end", this.color, n) }, t.prototype.render = function (t, e) { var u = this, n = e.layout; return Array.isArray(n) || (n = [{ component: wt }, { component: pt }], e.transparency && n.push({ component: pt, options: { sliderType: "alpha" } })), h("div", { class: "IroColorPicker", id: e.id, style: { display: e.display } }, n.map(function (t, n) { var i = t.component, r = t.options; return h(i, Object.assign({}, e, r, { ref: void 0, onInput: u.emitInputEvent.bind(u), parent: u, index: n })) })) }, t }(I); kt.defaultProps = Object.assign({}, { width: 300, height: 300, color: "#fff", colors: [], padding: 6, layoutDirection: "vertical", borderColor: "#fff", borderWidth: 0, handleRadius: 8, activeHandleRadius: null, handleSvg: null, handleProps: { x: 0, y: 0 }, wheelLightness: !0, wheelAngle: 0, wheelDirection: "anticlockwise", sliderSize: null, sliderMargin: 12, boxHeight: null }, { colors: [], display: "block", id: null, layout: "default", margin: null }); var mt, xt, jt, Mt, Ot = (It.prototype = (mt = kt).prototype, Object.assign(It, mt), It.I = mt, It); function It(n, t) { var i, r = document.createElement("div"); function e() { var t = n instanceof Element ? n : document.querySelector(n); t.appendChild(i.base), i.onMount(t) } return function (t, n, i) { var r, e, u; m.i && m.i(t, n), e = (r = i === o) ? null : i && i.n || n.n, t = h(O, null, [t]), u = [], k(n, r ? n.n = t : (i || n).n = t, e || x, x, void 0 !== n.ownerSVGElement, i && !r ? [i] : e ? null : j.slice.call(n.childNodes), u, !1, i || x, r), d(u, t) }(h(mt, Object.assign({}, { ref: function (t) { return i = t } }, t)), r), "loading" !== document.readyState ? e() : document.addEventListener("DOMContentLoaded", e), i } return (jt = xt = xt || {}).version = "5.5.2", jt.Color = V, jt.ColorPicker = Ot, (Mt = jt.ui || (jt.ui = {})).h = h, Mt.ComponentBase = gt, Mt.Handle = bt, Mt.Slider = pt, Mt.Wheel = wt, Mt.Box = yt, xt });
-    </script>
+    <div class="info-panel" id="oklchInfoPanel">
+        <p><strong>Understanding OKLCH Chroma (C):</strong><br>
+            Chroma (C) controls the color's intensity or 'vividness'.
+        <ul>
+            <li><strong>Slider (0-100%):</strong> This adjusts Chroma. 100% targets a reference colorfulness (around 0.4 in absolute OKLCH, typical for sRGB's brightest colors).</li>
+            <li><strong>Dynamic Range with L & H:</strong> The actual range of Chroma (vividness) you can achieve is not constant. It changes significantly depending on the current Lightness (L) and Hue (H) values you've selected.</li>
+            <li><strong>Adaptive Slider Track:</strong> The gradient on the Chroma slider's track <strong>dynamically updates</strong>. This visual guide shows you the maximum Chroma available within the sRGB color space for your current L and H settings. If you set Chroma beyond this visible limit, the color will be clamped to the most vivid sRGB-displayable equivalent.</li>
+        </ul>
+        </p>
+    </div>
 
-
-    <script>/* GoatColor.js
-* A compact, performant color conversion library for Hex, RGB, HSL, and OKLCH.
-* @author Bluff McCougar
-* @version 20250510.1230
-* @license MIT
-* Supports parsing modern and legacy CSS Color Module Level 4 syntax, including named colors.
-* OKLCH conversion based on Björn Ottosson's specification.
-*/
-        !function (t, e) { "object" == typeof exports && "undefined" != typeof module ? module.exports = e() : "function" == typeof define && define.amd ? define(e) : (t = "undefined" != typeof globalThis ? globalThis : t || self).GoatColor = e() }(this, (function () { "use strict"; const t = [[.4123907993, .3575843394, .1804807884], [.2126390059, .7151686788, .0721923154], [.0193308187, .1191947798, .9505321522]], e = [[3.240969942, -1.5373831776, -.4986107603], [-.9692436363, 1.8759675015, .0415550574], [.0556300797, -.2039769589, 1.0569715142]], r = (t, e, r) => Math.max(e, Math.min(t, r)), a = (t, e = 6) => Math.round(t * 10 ** e) / 10 ** e, i = t => "string" == typeof t && t.endsWith("%"); function s(t) { const e = String(t); return i(e) ? r(2.55 * parseFloat(e), 0, 255) : r(parseFloat(e), 0, 255) } function n(t) { const e = String(t).toLowerCase().trim(), r = parseFloat(e); return isNaN(r) ? 0 : e.endsWith("deg") || !/[a-z]$/.test(e) ? r % 360 : e.endsWith("rad") ? 180 * r / Math.PI % 360 : e.endsWith("grad") ? .9 * r % 360 : e.endsWith("turn") ? 360 * r % 360 : 0 } function h(t) { const e = String(t); if (!i(e)) throw new Error("Saturation/Lightness components in HSL must be percentages (e.g., '50%')."); const a = parseFloat(e); return r(a, 0, 100) } function o(t) { if (null == t) return 1; const e = String(t).trim(); return "" === e ? 1 : i(e) ? r(parseFloat(e), 0, 100) / 100 : r(parseFloat(e), 0, 1) } function f(t) { return Math.round(r(t, 0, 255)).toString(16).padStart(2, "0") } function d(t) { const e = t / 255; return e <= .04045 ? e / 12.92 : Math.pow((e + .055) / 1.055, 2.4) } function l(t) { const e = t <= .0031308 ? 12.92 * t : 1.055 * Math.pow(t, 1 / 2.4) - .055; return Math.round(255 * r(e, 0, 1)) } function c(t, e) { return [t[0][0] * e[0] + t[0][1] * e[1] + t[0][2] * e[2], t[1][0] * e[0] + t[1][1] * e[1] + t[1][2] * e[2], t[2][0] * e[0] + t[2][1] * e[1] + t[2][2] * e[2]] } function u(t, e, a) { const i = (t % 360 + 360) % 360 / 360, s = r(e, 0, 100) / 100, n = r(a, 0, 100) / 100; let h, o, f; if (0 === s) h = o = f = n; else { const t = (t, e, r) => (r < 0 && (r += 1), r > 1 && (r -= 1), r < 1 / 6 ? t + 6 * (e - t) * r : r < .5 ? e : r < 2 / 3 ? t + (e - t) * (2 / 3 - r) * 6 : t), e = n < .5 ? n * (1 + s) : n + s - n * s, r = 2 * n - e; h = t(r, e, i + 1 / 3), o = t(r, e, i), f = t(r, e, i - 1 / 3) } return { r: Math.round(255 * h), g: Math.round(255 * o), b: Math.round(255 * f) } } const g = /^rgba?\(\s*([+\-\d.%]+)\s+([+\-\d.%]+)\s+([+\-\d.%]+)\s*(?:\/\s*([+\-\d.%]+)\s*)?\)$/i, b = /^rgba?\(\s*([+\-\d.%]+)\s*,\s*([+\-\d.%]+)\s*,\s*([+\-\d.%]+)\s*(?:,\s*([+\-\d.%]+)\s*)?\)$/i, m = /^hsla?\(\s*([+\-\d.%a-z]+)\s+([+\-\d.%]+)\s+([+\-\d.%]+)\s*(?:\/\s*([+\-\d.%]+)\s*)?\)$/i, p = /^hsla?\(\s*([+\-\d.%a-z]+)\s*,\s*([+\-\d.%]+)\s*,\s*([+\-\d.%]+)\s*(?:,\s*([+\-\d.%]+)\s*)?\)$/i, $ = /^#?([a-f\d]{1})([a-f\d]{1})([a-f\d]{1})([a-f\d]{1})?$|^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})?$/i, k = /^0x([a-f\d]{2})?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i, y = /^oklch\(\s*([+\-\d.%]+)\s+([+\-\d.%]+)\s+([+\-\d.%a-z]+)\s*(?:\/\s*([+\-\d.%]+)\s*)?\)$/i, v = { aliceblue: "#f0f8ff", antiquewhite: "#faebd7", aqua: "#00ffff", aquamarine: "#7fffd4", azure: "#f0ffff", beige: "#f5f5dc", bisque: "#ffe4c4", black: "#000000", blanchedalmond: "#ffebcd", blue: "#0000ff", blueviolet: "#8a2be2", brown: "#a52a2a", burlywood: "#deb887", cadetblue: "#5f9ea0", chartreuse: "#7fff00", chocolate: "#d2691e", coral: "#ff7f50", cornflowerblue: "#6495ed", cornsilk: "#fff8dc", crimson: "#dc143c", cyan: "#00ffff", darkblue: "#00008b", darkcyan: "#008b8b", darkgoldenrod: "#b8860b", darkgray: "#a9a9a9", darkgreen: "#006400", darkgrey: "#a9a9a9", darkkhaki: "#bdb76b", darkmagenta: "#8b008b", darkolivegreen: "#556b2f", darkorange: "#ff8c00", darkorchid: "#9932cc", darkred: "#8b0000", darksalmon: "#e9967a", darkseagreen: "#8fbc8f", darkslateblue: "#483d8b", darkslategray: "#2f4f4f", darkslategrey: "#2f4f4f", darkturquoise: "#00ced1", darkviolet: "#9400d3", deeppink: "#ff1493", deepskyblue: "#00bfff", dimgray: "#696969", dimgrey: "#696969", dodgerblue: "#1e90ff", firebrick: "#b22222", floralwhite: "#fffaf0", forestgreen: "#228b22", fuchsia: "#ff00ff", gainsboro: "#dcdcdc", ghostwhite: "#f8f8ff", gold: "#ffd700", goldenrod: "#daa520", gray: "#808080", green: "#008000", greenyellow: "#adff2f", grey: "#808080", honeydew: "#f0fff0", hotpink: "#ff69b4", indianred: "#cd5c5c", indigo: "#4b0082", ivory: "#fffff0", khaki: "#f0e68c", lavender: "#e6e6fa", lavenderblush: "#fff0f5", lawngreen: "#7cfc00", lemonchiffon: "#fffacd", lightblue: "#add8e6", lightcoral: "#f08080", lightcyan: "#e0ffff", lightgoldenrodyellow: "#fafad2", lightgray: "#d3d3d3", lightgreen: "#90ee90", lightgrey: "#d3d3d3", lightpink: "#ffb6c1", lightsalmon: "#ffa07a", lightseagreen: "#20b2aa", lightskyblue: "#87cefa", lightslategray: "#778899", lightslategrey: "#778899", lightsteelblue: "#b0c4de", lightyellow: "#ffffe0", lime: "#00ff00", limegreen: "#32cd32", linen: "#faf0e6", magenta: "#ff00ff", maroon: "#800000", mediumaquamarine: "#66cdaa", mediumblue: "#0000cd", mediumorchid: "#ba55d3", mediumpurple: "#9370db", mediumseagreen: "#3cb371", mediumslateblue: "#7b68ee", mediumspringgreen: "#00fa9a", mediumturquoise: "#48d1cc", mediumvioletred: "#c71585", midnightblue: "#191970", mintcream: "#f5fffa", mistyrose: "#ffe4e1", moccasin: "#ffe4b5", navajowhite: "#ffdead", navy: "#000080", oldlace: "#fdf5e6", olive: "#808000", olivedrab: "#6b8e23", orange: "#ffa500", orangered: "#ff4500", orchid: "#da70d6", palegoldenrod: "#eee8aa", palegreen: "#98fb98", paleturquoise: "#afeeee", palevioletred: "#db7093", papayawhip: "#ffefd5", peachpuff: "#ffdab9", peru: "#cd853f", pink: "#ffc0cb", plum: "#dda0dd", powderblue: "#b0e0e6", purple: "#800080", rebeccapurple: "#663399", red: "#ff0000", rosybrown: "#bc8f8f", royalblue: "#4169e1", saddlebrown: "#8b4513", salmon: "#fa8072", sandybrown: "#f4a460", seagreen: "#2e8b57", seashell: "#fff5ee", sienna: "#a0522d", silver: "#c0c0c0", skyblue: "#87ceeb", slateblue: "#6a5acd", slategray: "#708090", slategrey: "#708090", snow: "#fffafa", springgreen: "#00ff7f", steelblue: "#4682b4", tan: "#d2b48c", teal: "#008080", thistle: "#d8bfd8", tomato: "#ff6347", transparent: "#ffffff00", turquoise: "#40e0d0", violet: "#ee82ee", wheat: "#f5deb3", white: "#ffffff", whitesmoke: "#f5f5f5", yellow: "#ffff00", yellowgreen: "#9acd32" }; class w { constructor(t) { this.r = 0, this.g = 0, this.b = 0, this.a = 1, this.input = t, this.valid = !1, this._parse(t) } _parse(t) { if ("string" != typeof t && null != t) return; let a = (f = String(t)) && "string" == typeof f ? f.trim() : ""; var f; if (!a && null != t) return; if (null == t) return; const d = a.toLowerCase(); let w; if (v.hasOwnProperty(d) && (a = v[d]), !((w = a.match($)) && (void 0 !== w[5] ? (this.r = parseInt(w[5], 16), this.g = parseInt(w[6], 16), this.b = parseInt(w[7], 16), this.a = w[8] ? parseInt(w[8], 16) / 255 : 1, this.valid = !0) : void 0 !== w[1] && (this.r = parseInt(w[1] + w[1], 16), this.g = parseInt(w[2] + w[2], 16), this.b = parseInt(w[3] + w[3], 16), this.a = w[4] ? parseInt(w[4] + w[4], 16) / 255 : 1, this.valid = !0), this.valid) || (w = a.match(k)) && (8 === a.length && void 0 === w[1] ? (this.r = parseInt(w[2], 16), this.g = parseInt(w[3], 16), this.b = parseInt(w[4], 16), this.a = 1, this.valid = !0) : 10 === a.length && void 0 !== w[1] && (this.a = parseInt(w[1], 16) / 255, this.r = parseInt(w[2], 16), this.g = parseInt(w[3], 16), this.b = parseInt(w[4], 16), this.valid = !0), this.valid))) { if (w = a.match(y)) { try { const t = function (t) { const e = String(t), a = parseFloat(e); if (isNaN(a)) throw new Error("Invalid OKLCH Lightness value."); return i(e) ? r(a, 0, 100) : r(100 * a, 0, 100) }(w[1]), a = function (t) { const e = String(t), a = parseFloat(e); if (isNaN(a)) throw new Error("Invalid OKLCH Chroma value."); return i(e) ? r(a / 100 * .4, 0, 1 / 0) : r(a, 0, 1 / 0) }(w[2]), s = n(w[3]), h = o(w[4]), { r: f, g: d, b: u } = function (t, a, i) { const s = r(t, 0, 100) / 100, n = r(a, 0, 1 / 0), h = (i % 360 + 360) % 360 * Math.PI / 180, o = n * Math.cos(h), f = n * Math.sin(h), d = s + .3963377774 * o + .2158037573 * f, u = s - .1055613458 * o - .0638541728 * f, g = s - .0894841775 * o - 1.291485548 * f, b = d * d * d, m = u * u * u, p = g * g * g, [$, k, y] = c(e, [b, m, p]); return { r: l($), g: l(k), b: l(y) } }(t, a, s); this.r = f, this.g = d, this.b = u, this.a = h, this.valid = !0 } catch (t) { this.valid = !1 } if (this.valid) return } if (w = a.match(m)) { try { const t = n(w[1]), e = h(w[2]), r = h(w[3]), a = o(w[4]), { r: i, g: s, b: f } = u(t, e, r); this.r = i, this.g = s, this.b = f, this.a = a, this.valid = !0 } catch (t) { this.valid = !1 } if (this.valid) return } if (w = a.match(p)) { try { const t = n(w[1]), e = h(w[2]), r = h(w[3]), a = o(w[4]), { r: i, g: s, b: f } = u(t, e, r); this.r = i, this.g = s, this.b = f, this.a = a, this.valid = !0 } catch (t) { this.valid = !1 } if (this.valid) return } if (w = a.match(g)) { try { if (this.r = s(w[1]), this.g = s(w[2]), this.b = s(w[3]), this.a = o(w[4]), isNaN(this.r) || isNaN(this.g) || isNaN(this.b) || isNaN(this.a)) throw new Error("Invalid RGB component"); this.valid = !0 } catch (t) { this.valid = !1 } if (this.valid) return } if (w = a.match(b)) try { if (this.r = s(w[1]), this.g = s(w[2]), this.b = s(w[3]), this.a = o(w[4]), isNaN(this.r) || isNaN(this.g) || isNaN(this.b) || isNaN(this.a)) throw new Error("Invalid RGB component"); this.valid = !0 } catch (t) { this.valid = !1 } } } isValid() { return this.valid } toRgb() { return { r: Math.round(this.r), g: Math.round(this.g), b: Math.round(this.b) } } toRgba() { return { r: Math.round(this.r), g: Math.round(this.g), b: Math.round(this.b), a: this.a } } toRgbString(t = !1) { const { r: e, g: r, b: a } = this.toRgb(); return t ? `rgb(${e}, ${r}, ${a})` : `rgb(${e} ${r} ${a})` } toRgbaString(t = !1) { const { r: e, g: r, b: i } = this.toRgb(), s = a(this.a, 3).toString(); return t ? `rgba(${e}, ${r}, ${i}, ${s})` : 1 === this.a ? `rgb(${e} ${r} ${i})` : `rgb(${e} ${r} ${i} / ${s})` } toHex() { return `#${f(this.r)}${f(this.g)}${f(this.b)}` } toHexa() { return `#${f(this.r)}${f(this.g)}${f(this.b)}${f(255 * this.a)}` } toHexShort() { if (this.a < 1) return null; const t = f(this.r), e = f(this.g), r = f(this.b); return t[0] === t[1] && e[0] === e[1] && r[0] === r[1] ? `#${t[0]}${e[0]}${r[0]}` : null } toHexaShort() { const t = f(this.r), e = f(this.g), r = f(this.b), a = f(255 * this.a); return t[0] === t[1] && e[0] === e[1] && r[0] === r[1] && a[0] === a[1] ? `#${t[0]}${e[0]}${r[0]}${a[0]}` : null } toHsl() { const { h: t, s: e, l: r } = function (t, e, r) { const a = t / 255, i = e / 255, s = r / 255, n = Math.max(a, i, s), h = Math.min(a, i, s); let o = 0, f = 0, d = (n + h) / 2; if (n === h) o = f = 0; else { const t = n - h; switch (f = d > .5 ? t / (2 - n - h) : t / (n + h), n) { case a: o = (i - s) / t + (i < s ? 6 : 0); break; case i: o = (s - a) / t + 2; break; case s: o = (a - i) / t + 4 }o /= 6 } return { h: 360 * o, s: 100 * f, l: 100 * d } }(this.r, this.g, this.b); return { h: a(t, 1), s: a(e, 1), l: a(r, 1) } } toHsla() { const { h: t, s: e, l: r } = this.toHsl(); return { h: t, s: e, l: r, a: this.a } } _formatFixed(t, e) { let r = t.toFixed(e); return e > 0 && (r = r.replace(/\.?0+$/, "")), r } toHslString(t = !1) { const { h: e, s: r, l: a } = this.toHsl(), i = this._formatFixed(e, 1), s = this._formatFixed(r, 1), n = this._formatFixed(a, 1); return t ? `hsl(${i}, ${s}%, ${n}%)` : `hsl(${i} ${s}% ${n}%)` } toHslaString(t = !1) { const { h: e, s: r, l: i } = this.toHsl(), s = a(this.a, 3).toString(), n = this._formatFixed(e, 1), h = this._formatFixed(r, 1), o = this._formatFixed(i, 1); return t ? `hsla(${n}, ${h}%, ${o}%, ${s})` : 1 === this.a ? `hsl(${n} ${h}% ${o}%)` : `hsl(${n} ${h}% ${o}% / ${s})` } toOklch() { const { l: e, c: r, h: i } = function (e, r, a) { const i = d(e), s = d(r), n = d(a), [h, o, f] = c(t, [i, s, n]), l = Math.cbrt(h), u = Math.cbrt(o), g = Math.cbrt(f), b = .2104542553 * l + .793617785 * u - .0040720468 * g, m = 1.9779984951 * l - 2.428592205 * u + .4505937099 * g, p = .0259040371 * l + .7827717662 * u - .808675766 * g, $ = Math.sqrt(m * m + p * p); let k = 180 * Math.atan2(p, m) / Math.PI; return k < 0 && (k += 360), { l: 100 * b, c: $, h: k } }(this.r, this.g, this.b); return { l: a(e, 2), c: a(r, 4), h: a(i, 2) } } toOklcha() { const { l: t, c: e, h: r } = this.toOklch(); return { l: t, c: e, h: r, a: this.a } } toOklchString() { const { l: t, c: e, h: r } = this.toOklch(); return `oklch(${this._formatFixed(t, 2)}% ${this._formatFixed(e, 4)} ${this._formatFixed(r, 2)})` } toOklchaString() { const { l: t, c: e, h: r } = this.toOklch(), i = a(this.a, 3).toString(), s = this._formatFixed(t, 2), n = this._formatFixed(e, 4), h = this._formatFixed(r, 2); return 1 === this.a ? `oklch(${s}% ${n} ${h})` : `oklch(${s}% ${n} ${h} / ${i})` } toString(t = "auto") { if (!this.valid) return String(this.input); const e = this.a < 1, r = this.toHexShort(), a = this.toHexaShort(); switch (t) { case "hex": return this.toHex(); case "hexa": return this.toHexa(); case "hexShort": return r || this.toHex(); case "hexaShort": return a || this.toHexa(); case "rgb": return this.toRgbString(); case "rgba": return this.toRgbaString(); case "rgbLegacy": return this.toRgbString(!0); case "rgbaLegacy": return this.toRgbaString(!0); case "hsl": return this.toHslString(); case "hsla": return this.toHslaString(); case "hslLegacy": return this.toHslString(!0); case "hslaLegacy": return this.toHslaString(!0); case "oklch": return this.toOklchString(); case "oklcha": return this.toOklchaString(); default: return e ? a || this.toHexa() : r || this.toHex() } } } function S(t) { return new w(t) } return S.goatColor = w, S.cssNamedColors = v, S.isValidColorString = function (t) { return new w(t).isValid() }, S }));</script>
-
-    <script>/* GoatPaletteGenerator.js
-* A script to generate a palette of colors based on increments of HSL values,
-* which can then be exported in various formats.
-* Uses GoatColor.js for color conversions and iro.js for the color picker.
-* @author Bluff McCougar
-* @version 20250513.1 (Refactored for clarity and minor optimizations)
-* @license MIT
-*/
-        let colorPicker, baseHueInput, baseSaturationInput, baseLightnessInput, incrementValueInput, varyParamRadios, paletteContainer, exportFormatRadios, generateButton, exportButton, exportXmlButton, themeToggleButton, htmlElement, bodyElement, colorPickerContainerElement, generatedColors = []; function formatHslComponent(e, t) { if ("number" != typeof e || isNaN(e)) return "0"; let n = e.toFixed(t); return t > 0 && (n = n.replace(/\.?0+$/, "")), n } function createSwatch(e, t, n, a) { const o = `hsl(${e} ${t}% ${n}%)`, r = GoatColor(o); if (!r.isValid()) return void console.warn("Invalid color generated during swatch creation:", { h: e, s: t, l: n }, "Input string:", o); const l = r.toHex(), i = r.toHslString(), s = document.createElement("div"); s.classList.add("colour-item"); const u = document.createElement("div"); u.classList.add("colour-input"), u.style.backgroundColor = l, u.title = `${i} - ${l}`; const c = document.createElement("div"); c.classList.add("colour-code"), c.textContent = l, c.style.color = l, s.appendChild(u), s.appendChild(c), a.appendChild(s) } function generatePalette() { const e = parseInt(baseHueInput.value), t = parseInt(baseSaturationInput.value), n = parseInt(baseLightnessInput.value), a = parseInt(incrementValueInput.value); let o = "hue"; if (varyParamRadios.forEach((e => { e.checked && (o = e.value) })), isNaN(e) || e < 0 || e > 359) return alert("Please enter a valid Base Hue (0-359)."), void baseHueInput.focus(); if (isNaN(t) || t < 0 || t > 100) return alert("Please enter a valid Base Saturation (0-100)."), void baseSaturationInput.focus(); if (isNaN(n) || n < 0 || n > 100) return alert("Please enter a valid Base Lightness (0-100)."), void baseLightnessInput.focus(); if (isNaN(a) || a < 1 || a > 100) return alert("Please enter a valid Increment Percentage (1-100)."), void incrementValueInput.focus(); paletteContainer.innerHTML = "", generatedColors = []; let r = []; if (a <= 0) r = [{ h: e, s: t, l: n }]; else { let l; if (15 === a) l = 6; else if (12 === a) l = 8; else { l = 1 + 2 * Math.floor(100 / a / 2), l = Math.max(1, l) } const i = l - 1, s = Math.ceil(i / 2), u = Math.floor(i / 2); if ("hue" === o) { const o = Math.round(a / 100 * 360); if (0 === o && l > 1) r = [{ h: e, s: t, l: n }]; else if (1 === l) r = [{ h: e, s: t, l: n }]; else { let a = new Set; a.add(e); for (let t = 1; t <= s; t++) { let n = e + t * o; if (a.add((n % 360 + 360) % 360), a.size >= 360) break } for (let t = 1; t <= u; t++) { let n = e - t * o; if (a.add((n % 360 + 360) % 360), a.size >= 360) break } r = Array.from(a).map((e => ({ h: e, s: t, l: n }))), r.sort(((e, t) => e.h - t.h)) } } else if ("saturation" === o || "lightness" === o) { let i = new Set; const s = "saturation" === o ? t : n; i.add(s); for (let e = 1; i.size < l; e++) { let t = !1; if (i.size < l) { const n = s + e * a; n >= 0 && n <= 100 && !i.has(n) && (i.add(n), t = !0) } if (i.size < l) { const n = s - e * a; n >= 0 && n <= 100 && !i.has(n) && (i.add(n), t = !0) } if (!t) break; if (e > 100 / Math.max(1, a) + 5 && i.size < l) break } "saturation" === o ? (r = Array.from(i).map((t => ({ h: e, s: t, l: n }))), r.sort(((e, t) => e.s - t.s))) : (r = Array.from(i).map((n => ({ h: e, s: t, l: n }))), r.sort(((e, t) => e.l - t.l))) } } generatedColors = r; for (const e of generatedColors) createSwatch(e.h, e.s, e.l, paletteContainer) } function generateExportHeaderComment() { const e = baseHueInput.value, t = baseSaturationInput.value, n = baseLightnessInput.value, a = incrementValueInput.value; let o = "hue"; varyParamRadios.forEach((e => { e.checked && (o = e.value) })); let r = "hex"; exportFormatRadios.forEach((e => { e.checked && (r = e.value) })); return `/*\n * Palette based on ${`HSL(${e}° ${t}% ${n}%)`}\n * Varying: ${o.charAt(0).toUpperCase() + o.slice(1)}, Increment: ${a}%\n * Export Format: ${r.toUpperCase()}\n */\n\n` } function generateExportFilename(e, t) { const n = new Date, a = e => e.toString().padStart(2, "0"); return `${e} ${n.getFullYear().toString().slice(-2)}${a(n.getMonth() + 1)}${a(n.getDate())}${a(n.getHours())}${a(n.getMinutes())}.${t}` } function exportCssPalette() { if (0 === generatedColors.length) return void alert("Generate a palette first!"); let e = "hex"; exportFormatRadios.forEach((t => { t.checked && (e = t.value) })); let t = "hue"; varyParamRadios.forEach((e => { e.checked && (t = e.value) })); const n = parseInt(baseHueInput.value), a = parseInt(baseSaturationInput.value), o = parseInt(baseLightnessInput.value); let r = generateExportHeaderComment() + ":root {\n"; generatedColors.forEach(((l, i) => { const s = `hsl(${l.h} ${l.s}% ${l.l}%)`, u = GoatColor(s); if (!u.isValid()) return void console.warn("Skipping invalid color during CSS export:", l); const c = `--color-${String(i + 1).padStart(3, "0")}`; let d = ""; switch (e) { case "hsl": let e = l.h, r = l.s, i = l.l; "hue" === t ? (r = a, i = o) : "saturation" === t ? (e = n, i = o) : "lightness" === t && (e = n, r = a); d = `hsl(${formatHslComponent(e, 1)} ${formatHslComponent(r, 0)}% ${formatHslComponent(i, 0)}%)`; break; case "rgb": d = u.toRgbString(); break; default: d = u.toHex() }r += `  ${c}: ${d};\n` })), r += "}"; const l = new Blob([r], { type: "text/css" }), i = document.createElement("a"); i.href = URL.createObjectURL(l), i.download = generateExportFilename("palette", "css"), document.body.appendChild(i), i.click(), setTimeout((() => { document.body.removeChild(i), URL.revokeObjectURL(i.href) }), 100) } function exportXmlPalette() { if (0 === generatedColors.length) return void alert("Generate a palette first!"); let e = "hex"; exportFormatRadios.forEach((t => { t.checked && (e = t.value) })); let t = "hue"; varyParamRadios.forEach((e => { e.checked && (t = e.value) })); const n = parseInt(baseHueInput.value), a = parseInt(baseSaturationInput.value), o = parseInt(baseLightnessInput.value); let r = `<?xml version="1.0" encoding="UTF-8"?>\n${generateExportHeaderComment().replace(/\/\*/g, "\x3c!--").replace(/\*\//g, "--\x3e")}<Palette>\n\n`; generatedColors.forEach(((l, i) => { const s = `hsl(${l.h} ${l.s}% ${l.l}%)`, u = GoatColor(s); if (!u.isValid()) return void console.warn("Skipping invalid color during XML export:", l); let c = "", d = ""; switch (e) { case "hsl": let e = l.h, r = l.s, i = l.l; "hue" === t ? (r = a, i = o) : "saturation" === t ? (e = n, i = o) : "lightness" === t && (e = n, r = a); c = `hsl(${formatHslComponent(e, 1)} ${formatHslComponent(r, 0)}% ${formatHslComponent(i, 0)}%)`, d = "hslValue"; break; case "rgb": c = u.toRgbString(), d = "rgbValue"; break; default: c = u.toHex(), d = "hexValue" }const p = `color${String(i + 1).padStart(3, "0")}`; c = c.replace(/&/g, "&").replace(/</g, "<").replace(/>/g, ">").replace(/"/g, '"').replace(/'/g, "'"), r += `    <myColor ${d}="${c}" name="${p}" />\n` })), r += "\n</Palette>"; const l = new Blob([r], { type: "application/xml" }), i = document.createElement("a"); i.href = URL.createObjectURL(l), i.download = generateExportFilename("palette", "xml"), document.body.appendChild(i), i.click(), setTimeout((() => { document.body.removeChild(i), URL.revokeObjectURL(i.href) }), 100) } function initializeApp() { let e = []; if ("undefined" == typeof GoatColor && e.push("GoatColor"), "undefined" == typeof iro && e.push("iro"), e.length > 0) return console.warn(`Waiting for ${e.join(" and ")} to be defined...`), void setTimeout(initializeApp, 200); if (baseHueInput = document.getElementById("base-hue"), baseSaturationInput = document.getElementById("base-saturation"), baseLightnessInput = document.getElementById("base-lightness"), incrementValueInput = document.getElementById("increment-value"), varyParamRadios = document.querySelectorAll('input[name="vary-param"]'), paletteContainer = document.getElementById("palette-container"), exportFormatRadios = document.querySelectorAll('input[name="export-format"]'), generateButton = document.getElementById("generate-button"), exportButton = document.getElementById("export-button"), exportXmlButton = document.getElementById("export-xml-button"), themeToggleButton = document.getElementById("toggle-theme-button"), htmlElement = document.documentElement, bodyElement = document.body, colorPickerContainerElement = document.getElementById("colorPickerContainer"), !(generateButton && exportButton && exportXmlButton && themeToggleButton && baseHueInput && paletteContainer)) return console.error("One or more critical DOM elements not found. Halting initialization."), void (paletteContainer && (paletteContainer.innerHTML = "<p>Error: Application could not initialize. Required elements are missing.</p>")); if (generateButton.addEventListener("click", generatePalette), exportButton.addEventListener("click", exportCssPalette), exportXmlButton.addEventListener("click", exportXmlPalette), themeToggleButton.addEventListener("click", (() => { htmlElement.classList.toggle("light-mode"), bodyElement.classList.toggle("light-mode") })), colorPickerContainerElement) try { let e = parseInt(baseHueInput.value, 10), t = parseInt(baseSaturationInput.value, 10), n = parseInt(baseLightnessInput.value, 10); e = e >= 0 && e <= 359 ? e : 0, t = t >= 0 && t <= 100 ? t : 60, n = n >= 0 && n <= 100 ? n : 75, baseHueInput.value = e, baseSaturationInput.value = t, baseLightnessInput.value = n, colorPicker = new iro.ColorPicker(colorPickerContainerElement, { width: 220, color: { h: e, s: t, l: n }, layout: "default" }), colorPicker.on("color:change", (function (e) { baseHueInput.value = Math.round(e.hsl.h), baseSaturationInput.value = Math.round(e.hsl.s), baseLightnessInput.value = Math.round(e.hsl.l) })); const a = () => { const e = parseInt(baseHueInput.value, 10), t = parseInt(baseSaturationInput.value, 10), n = parseInt(baseLightnessInput.value, 10); colorPicker && !isNaN(e) && !isNaN(t) && !isNaN(n) && e >= 0 && e <= 359 && t >= 0 && t <= 100 && n >= 0 && n <= 100 && (colorPicker.color.hsl.h === e && colorPicker.color.hsl.s === t && colorPicker.color.hsl.l === n || (colorPicker.color.hsl = { h: e, s: t, l: n })) }; baseHueInput.addEventListener("input", a), baseSaturationInput.addEventListener("input", a), baseLightnessInput.addEventListener("input", a) } catch (e) { console.error("Error initializing iro.ColorPicker:", e), colorPickerContainerElement && (colorPickerContainerElement.textContent = "Error: Color Picker failed to initialize.") } else console.error("colorPickerContainer element not found. Cannot initialize color picker."); try { generatePalette() } catch (e) { console.error("Error during initial generatePalette():", e) } } document.addEventListener("DOMContentLoaded", initializeApp);</script>
-
+    <script src="GoatColorToolbox.js"></script>
+    <script src="GoatPaletteGenerator.js"></script>
 </body>
 
 </html>
