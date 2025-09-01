@@ -8,5 +8,4 @@ Colors can be output as hex, RGB, HSL, or OKLCH and saved to CSS or XML files.
 
 ## Usage
 
-Either [open the HTML](https://rawcdn.githack.com/dcog989/GOAT-Palette-Generator/b3050b55c1a0c15e14264b67bbc3378ef8f116d2/Goat%20Palette%20Generator.html), or [download the files](https://github.com/dcog989/GOAT-Palette-Generator/archive/refs/heads/main.zip) to use it locally.
-
+Go to [Goat Palette Generator](https://dcog989.github.io/Goat-Palette-Generator/), or [download the files](https://github.com/dcog989/GOAT-Palette-Generator/archive/refs/heads/main.zip) to use it locally.
