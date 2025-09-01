@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Goat Palette Generator</title>
+    <link rel="stylesheet" href="css/GoatPaletteGenerator.css">
+    <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+</head>
+
+<body>
+
+    <h1>Goat Palette Generator</h1>
+
+    <div class="main-controls-wrapper">
+        <div class="picker-and-tabs-column">
+            <div class="tabs">
+                <button class="tab-link active" data-tab="hslPickerPanel">HSL</button>
+                <button class="tab-link" data-tab="oklchPickerPanel">OKLCH</button>
+            </div>
+
+            <div class="picker-column">
+                <div id="hslPickerPanel" class="tab-content active">
+                    <div class="compact-picker-wrapper">
+                        <div id="colorPreviewBoxHsl" class="color-preview-box">
+                            <div class="checkerboard-element"></div>
+                            <div class="color-overlay-element"></div>
+                        </div>
+                        <div class="compact-picker-controls">
+                            <div class="slider-group color-string-input-group">
+                                <label for="color-string-input-hsl">Set:</label>
+                                <input type="text" id="color-string-input-hsl" class="color-string-input" spellcheck="false" placeholder="Paste any color string...">
+                            </div>
+                            <div class="slider-group">
+                                <label for="base-hue-slider">H:</label>
+                                <input type="range" id="base-hue-slider" class="hue-slider" min="0" max="359">
+                                <input type="number" id="base-hue-input-slider" class="slider-value-input" min="0" max="359"><span>°</span>
+                                <div class="vary-param-selector-inline">
+                                    <input type="radio" id="vary-hue-hsl" name="vary-param-hsl" value="hue" data-param-name="Hue" checked>
+                                    <label for="vary-hue-hsl" class="tick-label">✔</label>
+                                </div>
+                            </div>
+                            <div class="slider-group">
+                                <label for="base-saturation-slider">S:</label>
+                                <input type="range" id="base-saturation-slider" class="saturation-slider" min="0" max="100">
+                                <input type="number" id="base-saturation-input-slider" class="slider-value-input" min="0" max="100"><span>%</span>
+                                <div class="vary-param-selector-inline">
+                                    <input type="radio" id="vary-saturation-hsl" name="vary-param-hsl" value="saturation" data-param-name="Saturation">
+                                    <label for="vary-saturation-hsl" class="tick-label">✔</label>
+                                </div>
+                            </div>
+                            <div class="slider-group">
+                                <label for="base-lightness-slider">L:</label>
+                                <input type="range" id="base-lightness-slider" class="lightness-slider" min="0" max="100">
+                                <input type="number" id="base-lightness-input-slider" class="slider-value-input" min="0" max="100"><span>%</span>
+                                <div class="vary-param-selector-inline">
+                                    <input type="radio" id="vary-lightness-hsl" name="vary-param-hsl" value="lightness" data-param-name="Lightness">
+                                    <label for="vary-lightness-hsl" class="tick-label">✔</label>
+                                </div>
+                            </div>
+                            <div class="slider-group opacity-slider-group">
+                                <label for="base-opacity-slider-hsl">A:</label>
+                                <input type="range" id="base-opacity-slider-hsl" class="opacity-slider checkerboard-track" min="0" max="100">
+                                <input type="number" id="base-opacity-input-slider-hsl" class="slider-value-input" min="0" max="100"><span>%</span>
+                                <div class="vary-param-selector-inline">
+                                    <input type="radio" id="vary-opacity-hsl" name="vary-param-hsl" value="opacity" data-param-name="Opacity">
+                                    <label for="vary-opacity-hsl" class="tick-label">✔</label>
+                                </div>
+                            </div>
+                            <div class="slider-group increment-control-group-inline">
+                                <div class="increment-label-parts">
+                                    <span>Output </span>
+                                    <input type="number" id="increment-value-hsl" class="slider-value-input increment-value-inline" min="1" max="33" value="6">
+                                    <span id="dynamicIncrementLabelHsl_suffix" class="increment-label-suffix"> swatches of Hue...</span>
+                                </div>
+                                <div class="vary-param-selector-placeholder"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="oklchPickerPanel" class="tab-content">
+                    <div class="compact-picker-wrapper">
+                        <div id="colorPreviewBoxOklch" class="color-preview-box">
+                            <div class="checkerboard-element"></div>
+                            <div class="color-overlay-element"></div>
+                        </div>
+                        <div class="compact-picker-controls">
+                            <div class="slider-group color-string-input-group">
+                                <label for="color-string-input-oklch">Set:</label>
+                                <input type="text" id="color-string-input-oklch" class="color-string-input" spellcheck="false" placeholder="Paste any color string...">
+                            </div>
+                            <div class="slider-group">
+                                <label for="oklch-l-slider">L:</label>
+                                <input type="range" id="oklch-l-slider" class="oklch-l-slider" min="0" max="100" step="1">
+                                <input type="number" id="oklch-l-input-slider" class="slider-value-input" min="0" max="100" step="1"><span>%</span>
+                                <div class="vary-param-selector-inline">
+                                    <input type="radio" id="vary-l-oklch" name="vary-param-oklch" value="oklch_l" data-param-name="Lightness">
+                                    <label for="vary-l-oklch" class="tick-label">✔</label>
+                                </div>
+                            </div>
+                            <div class="slider-group">
+                                <label for="oklch-c-slider">C:</label>
+                                <input type="range" id="oklch-c-slider" class="oklch-c-slider" min="0" max="100" step="1">
+                                <input type="number" id="oklch-c-input-slider" class="slider-value-input" min="0" max="100" step="1" title="Chroma (colorfulness percentage relative to a typical sRGB maximum). Maximum achievable actual chroma changes with Lightness and Hue.">
+                                <span>%</span>
+                                <div class="vary-param-selector-inline">
+                                    <input type="radio" id="vary-c-oklch" name="vary-param-oklch" value="oklch_c" data-param-name="Chroma">
+                                    <label for="vary-c-oklch" class="tick-label">✔</label>
+                                </div>
+                            </div>
+                            <div class="slider-group">
+                                <label for="oklch-h-slider">H:</label>
+                                <input type="range" id="oklch-h-slider" class="oklch-h-slider" min="0" max="359">
+                                <input type="number" id="oklch-h-input-slider" class="slider-value-input" min="0" max="359"><span>°</span>
+                                <div class="vary-param-selector-inline">
+                                    <input type="radio" id="vary-h-oklch" name="vary-param-oklch" value="oklch_h" data-param-name="Hue">
+                                    <label for="vary-h-oklch" class="tick-label">✔</label>
+                                </div>
+                            </div>
+                            <div class="slider-group opacity-slider-group">
+                                <label for="base-opacity-slider-oklch">A:</label>
+                                <input type="range" id="base-opacity-slider-oklch" class="opacity-slider checkerboard-track" min="0" max="100">
+                                <input type="number" id="base-opacity-input-slider-oklch" class="slider-value-input" min="0" max="100"><span>%</span>
+                                <div class="vary-param-selector-inline">
+                                    <input type="radio" id="vary-opacity-oklch" name="vary-param-oklch" value="opacity" data-param-name="Opacity">
+                                    <label for="vary-opacity-oklch" class="tick-label">✔</label>
+                                </div>
+                            </div>
+                            <div class="slider-group increment-control-group-inline">
+                                <div class="increment-label-parts">
+                                    <span>Output </span>
+                                    <input type="number" id="increment-value-oklch" class="slider-value-input increment-value-inline" min="1" max="33" value="6">
+                                    <span id="dynamicIncrementLabelOklch_suffix" class="increment-label-suffix"> swatches of Lightness...</span>
+                                </div>
+                                <div class="vary-param-selector-placeholder"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="palette-container"></div>
+
+    <div class="export-controls">
+        <div class="control-group export-format-group">
+            <label>Export Format</label>
+            <div class="radio-group">
+                <input type="radio" id="format-hsl" name="export-format" value="hsl" checked><label for="format-hsl">HSL</label>
+                <input type="radio" id="format-hex" name="export-format" value="hex"><label for="format-hex">Hex</label>
+                <input type="radio" id="format-rgb" name="export-format" value="rgb"><label for="format-rgb">RGB</label>
+                <input type="radio" id="format-oklch" name="export-format" value="oklch"><label for="format-oklch">OKLCH</label>
+            </div>
+        </div>
+        <button id="export-button">Export to CSS</button>
+        <button id="export-xml-button">Export to XML</button>
+    </div>
+
+    <div class="info-panel" id="oklchInfoPanel">
+        <p><strong>Understanding OKLCH Chroma (C):</strong><br>
+            Chroma (C) controls the color's intensity or 'vividness'.
+        <ul>
+            <li><strong>Slider (0-100%):</strong> This adjusts Chroma. 100% targets a reference colorfulness (around 0.4 in absolute OKLCH, typical for sRGB's brightest colors).</li>
+            <li><strong>Dynamic Range with L & H:</strong> The actual range of Chroma (vividness) you can achieve is not constant. It changes significantly depending on the current Lightness (L) and Hue (H) values you've selected.</li>
+            <li><strong>Adaptive Slider Track:</strong> The gradient on the Chroma slider's track <strong>dynamically updates</strong>. This visual guide shows you the maximum Chroma available within the sRGB color space for your current L and H settings. If you set Chroma beyond this visible limit, the color will be clamped to the most vivid sRGB-displayable equivalent.</li>
+        </ul>
+        </p>
+    </div>
+
+    <script src="js/GoatColorToolbox.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/state.js"></script>
+    <script src="js/dom.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/palette.js"></script>
+    <script src="js/handlers.js"></script>
+    <script src="js/exporter.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

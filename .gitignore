@@ -1,0 +1,11 @@
+# FILES
+TODO.md
+.repomixignore
+repomix.config.json
+*.pdb
+
+# FOLDERS
+.archive/
+.gemini/
+.testdata/
+build/
