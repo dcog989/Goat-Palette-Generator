@@ -115,29 +115,9 @@ window.GPG = window.GPG || {};
                 GPG.state.lastOklchHue = GPG.utils.normalizeHueForDisplay(masterOklch.h);
             }
 
-            const forceFullHslUpdate = (targetPanelIdForFullUpdate === "hslPickerPanel" && isInitialSync) ||
-                GPG.state.activePickerMode !== "hsl" ||
-                GPG.elements.baseHueInputSlider.value === "" ||
-                GPG.elements.baseSaturationInputSlider.value === "" ||
-                GPG.elements.baseLightnessInputSlider.value === "";
-
-            let hDisplayHsl, sDisplayHsl, lDisplayHsl;
-            if (forceFullHslUpdate) {
-                sDisplayHsl = Math.round(masterHsl.s);
-                lDisplayHsl = Math.round(masterHsl.l);
-                hDisplayHsl = GPG.utils.normalizeHueForDisplay(sDisplayHsl === 0 ? GPG.state.lastHslHue : Math.round(masterHsl.h));
-            } else {
-                let currentUiH_hsl = parseInt(GPG.elements.baseHueInputSlider.value, 10);
-                let currentUiS_hsl = parseInt(GPG.elements.baseSaturationInputSlider.value, 10);
-                let currentUiL_hsl = parseInt(GPG.elements.baseLightnessInputSlider.value, 10);
-
-                sDisplayHsl = !isNaN(currentUiS_hsl) ? currentUiS_hsl : Math.round(masterHsl.s);
-                lDisplayHsl = !isNaN(currentUiL_hsl) ? currentUiL_hsl : Math.round(masterHsl.l);
-                hDisplayHsl = GPG.utils.normalizeHueForDisplay(sDisplayHsl === 0 ? GPG.state.lastHslHue : (!isNaN(currentUiH_hsl) ? currentUiH_hsl : GPG.state.lastHslHue));
-            }
-            hDisplayHsl = GPG.utils.normalizeHueForDisplay(hDisplayHsl);
-            sDisplayHsl = Math.max(0, Math.min(100, Math.round(isNaN(sDisplayHsl) ? 0 : sDisplayHsl)));
-            lDisplayHsl = Math.max(0, Math.min(100, Math.round(isNaN(lDisplayHsl) ? 0 : lDisplayHsl)));
+            let sDisplayHsl = Math.round(masterHsl.s);
+            let lDisplayHsl = Math.round(masterHsl.l);
+            let hDisplayHsl = GPG.utils.normalizeHueForDisplay(sDisplayHsl === 0 ? GPG.state.lastHslHue : Math.round(masterHsl.h));
 
             this.updateUiElementValue(GPG.elements.baseHueSlider, hDisplayHsl);
             this.updateUiElementValue(GPG.elements.baseHueInputSlider, hDisplayHsl);
@@ -146,35 +126,14 @@ window.GPG = window.GPG || {};
             this.updateUiElementValue(GPG.elements.baseLightnessSlider, lDisplayHsl);
             this.updateUiElementValue(GPG.elements.baseLightnessInputSlider, lDisplayHsl);
 
-            const forceFullOklchUpdate = (targetPanelIdForFullUpdate === "oklchPickerPanel" && isInitialSync) ||
-                GPG.state.activePickerMode !== "oklch" ||
-                GPG.elements.oklchLInputSlider.value === "" ||
-                GPG.elements.oklchCInputSlider.value === "" ||
-                GPG.elements.oklchHInputSlider.value === "";
-
-            let oklchLForDisplay, oklchCPercentForDisplay, oklchHueForUiDisplay;
-
-            if (forceFullOklchUpdate) {
-                oklchLForDisplay = Math.round(masterOklch.l);
-                oklchHueForUiDisplay = GPG.utils.normalizeHueForDisplay(masterOklch.c < 0.001 ? GPG.state.lastOklchHue : Math.round(masterOklch.h));
-
-                let maxCForMaster = GoatColor.getMaxSRGBChroma(oklchLForDisplay, oklchHueForUiDisplay, GPG.OKLCH_C_SLIDER_STATIC_MAX_ABSOLUTE);
-                if (maxCForMaster < 0.0001) maxCForMaster = GPG.OKLCH_C_SLIDER_STATIC_MAX_ABSOLUTE;
-                oklchCPercentForDisplay = masterOklch.c > 0 ? (masterOklch.c / maxCForMaster) * 100 : 0;
-            } else {
-                const currentUiL = parseInt(GPG.elements.oklchLInputSlider.value, 10);
-                const currentUiCPercent = parseFloat(GPG.elements.oklchCInputSlider.value);
-                const currentUiH = parseInt(GPG.elements.oklchHInputSlider.value, 10);
-
-                oklchLForDisplay = !isNaN(currentUiL) ? currentUiL : Math.round(masterOklch.l);
-                oklchCPercentForDisplay = !isNaN(currentUiCPercent) ? currentUiCPercent : 0;
-                oklchHueForUiDisplay = !isNaN(currentUiH) ? currentUiH : GPG.state.lastOklchHue;
-            }
-
-            oklchLForDisplay = Math.round(oklchLForDisplay);
+            let oklchLForDisplay = Math.round(masterOklch.l);
+            let oklchHueForUiDisplay = GPG.utils.normalizeHueForDisplay(masterOklch.c < 0.001 ? GPG.state.lastOklchHue : Math.round(masterOklch.h));
+            let maxCForMaster = GoatColor.getMaxSRGBChroma(oklchLForDisplay, oklchHueForUiDisplay, GPG.OKLCH_C_SLIDER_STATIC_MAX_ABSOLUTE);
+            if (maxCForMaster < 0.0001) maxCForMaster = GPG.OKLCH_C_SLIDER_STATIC_MAX_ABSOLUTE;
+            let oklchCPercentForDisplay = masterOklch.c > 0 ? (masterOklch.c / maxCForMaster) * 100 : 0;
             oklchCPercentForDisplay = Math.max(0, Math.min(100, Math.round(oklchCPercentForDisplay)));
             if (isNaN(oklchCPercentForDisplay)) oklchCPercentForDisplay = 0;
-            oklchHueForUiDisplay = GPG.utils.normalizeHueForDisplay(oklchHueForUiDisplay);
+
 
             this.updateUiElementValue(GPG.elements.oklchLSlider, oklchLForDisplay);
             this.updateUiElementValue(GPG.elements.oklchLInputSlider, oklchLForDisplay);
@@ -190,11 +149,12 @@ window.GPG = window.GPG || {};
             this.updateUiElementValue(GPG.elements.baseOpacitySliderOklch, currentAlphaPercent);
             this.updateUiElementValue(GPG.elements.baseOpacityInputSliderOklch, currentAlphaPercent);
 
-            const outputFormat = GPG.state.activePickerMode === 'hsl' ? 'hsl' : 'oklch';
-            const colorStringForDisplay = GPG.utils.getFormattedColorString(GPG.state.currentGoatColor, outputFormat);
-            this.updateUiElementValue(GPG.elements.colorStringInputHsl, colorStringForDisplay);
-            this.updateUiElementValue(GPG.elements.colorStringInputOklch, colorStringForDisplay);
+            const hslStringForDisplay = GPG.utils.getFormattedColorString(GPG.state.currentGoatColor, 'hsl');
+            this.updateUiElementValue(GPG.elements.colorStringInputHsl, hslStringForDisplay);
             GPG.elements.colorStringInputHsl.classList.remove('invalid');
+
+            const oklchStringForDisplay = GPG.utils.getFormattedColorString(GPG.state.currentGoatColor, 'oklch');
+            this.updateUiElementValue(GPG.elements.colorStringInputOklch, oklchStringForDisplay);
             GPG.elements.colorStringInputOklch.classList.remove('invalid');
 
             const previewColorString = GPG.state.currentGoatColor.toRgbaString();
